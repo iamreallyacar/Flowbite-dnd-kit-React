@@ -1,10 +1,10 @@
 import { Blockquote } from 'flowbite-react'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function BlockquoteSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">Blockquote</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Blockquote</ShowcaseHeading>
       <p className="text-gray-600 mb-6">
         Display quoted text content with proper typography and styling for testimonials and citations.
       </p>
@@ -12,7 +12,7 @@ export function BlockquoteSection() {
       <div className="space-y-8">
         {/* Default Blockquote */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Default Blockquote</h3>
+          <ShowcaseSubheading>Default Blockquote</ShowcaseSubheading>
           <Blockquote>
             "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to complex dashboard. Perfect choice for your next SaaS application."
           </Blockquote>
@@ -20,7 +20,7 @@ export function BlockquoteSection() {
 
         {/* Solid Background Blockquote */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Solid Background</h3>
+          <ShowcaseSubheading>Solid Background</ShowcaseSubheading>
           <div className="p-4 bg-gray-50 rounded-lg">
             <Blockquote className="text-xl italic font-semibold text-gray-900 dark:text-white">
               <p>"Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to complex dashboard. Perfect choice for your next SaaS application."</p>
@@ -30,7 +30,7 @@ export function BlockquoteSection() {
 
         {/* Blockquote with Citation */}
         <div>
-          <h3 className="text-lg font-medium mb-4">With Citation</h3>
+          <ShowcaseSubheading>With Citation</ShowcaseSubheading>
           <figure className="max-w-screen-md">
             <div className="mb-4 text-4xl text-gray-400 dark:text-gray-600">
               <svg className="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
@@ -54,7 +54,7 @@ export function BlockquoteSection() {
 
         {/* User Testimonial */}
         <div>
-          <h3 className="text-lg font-medium mb-4">User Testimonial</h3>
+          <ShowcaseSubheading>User Testimonial</ShowcaseSubheading>
           <div className="p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
             <div className="flex items-center mb-4">
               <img className="w-10 h-10 me-4 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png" alt="" />
@@ -91,7 +91,7 @@ export function BlockquoteSection() {
 
         {/* Blockquote Variants */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Different Styles</h3>
+          <ShowcaseSubheading>Different Styles</ShowcaseSubheading>
           <div className="space-y-6">
             {/* Border Left */}
             <div className="pl-4 border-l-4 border-gray-300 dark:border-gray-500">
@@ -126,6 +126,8 @@ export function BlockquoteSection() {
           </div>
         </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }
+import { ShowcaseSubheading } from '../../components'
+

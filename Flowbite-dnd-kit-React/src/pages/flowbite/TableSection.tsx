@@ -1,10 +1,10 @@
 import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'flowbite-react'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function TableSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">Table</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Table</ShowcaseHeading>
       <p className="text-gray-600 mb-6">
         Display data in rows and columns with customizable table components.
       </p>
@@ -139,6 +139,6 @@ export function TableSection() {
           </div>
         </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

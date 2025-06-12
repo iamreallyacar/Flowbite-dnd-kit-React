@@ -1,11 +1,11 @@
 import { Footer, FooterBrand, FooterCopyright, FooterDivider, FooterIcon, FooterLink, FooterLinkGroup, FooterTitle } from 'flowbite-react'
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function FooterSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold mb-6">Footer</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Footer</ShowcaseHeading>
       <Footer container>
         <div className="w-full">
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
@@ -53,6 +53,6 @@ export function FooterSection() {
           </div>
         </div>
       </Footer>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

@@ -86,9 +86,7 @@ export function DroppableSection() {
 
   function handleDragStart(event: DragStartEvent) {
     setActiveId(event.active.id as string)
-  }
-
-  function handleDragEnd(event: DragEndEvent) {
+  }  function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event
     setActiveId(null)
 
@@ -99,15 +97,38 @@ export function DroppableSection() {
     const activeData = active.data.current
     const overData = over.data.current
 
-    // Check if the drop is valid based on type
-    if (overData?.accepts !== 'all' && activeData?.type !== overData?.accepts) {
-      return // Invalid drop
+    // Find where the item currently is
+    let sourceContainer: 'source' | 'task-zone' | 'file-zone' | 'general-zone' | null = null
+    if (sourceItems.includes(activeId)) sourceContainer = 'source'
+    else if (taskZone.includes(activeId)) sourceContainer = 'task-zone'
+    else if (fileZone.includes(activeId)) sourceContainer = 'file-zone'
+    else if (generalZone.includes(activeId)) sourceContainer = 'general-zone'
+
+    if (!sourceContainer) return
+
+    // If dropping in the same container, do nothing
+    if (sourceContainer === overId) return
+
+    // Check if the drop is valid based on type (only for drop zones, not source)
+    if (overId !== 'source' && overData?.accepts !== 'all' && activeData?.type !== overData?.accepts) {
+      return // Invalid drop - item stays in original container
     }
 
-    // Remove from source
-    setSourceItems(prev => prev.filter(item => item !== activeId))
-
-    // Add to appropriate zone
+    // Remove from current container
+    switch (sourceContainer) {
+      case 'source':
+        setSourceItems(prev => prev.filter(item => item !== activeId))
+        break
+      case 'task-zone':
+        setTaskZone(prev => prev.filter(item => item !== activeId))
+        break
+      case 'file-zone':
+        setFileZone(prev => prev.filter(item => item !== activeId))
+        break
+      case 'general-zone':
+        setGeneralZone(prev => prev.filter(item => item !== activeId))
+        break
+    }    // Add to target container
     switch (overId) {
       case 'task-zone':
         setTaskZone(prev => [...prev, activeId])
@@ -119,7 +140,7 @@ export function DroppableSection() {
         setGeneralZone(prev => [...prev, activeId])
         break
       case 'source':
-        // Return to source
+        setSourceItems(prev => [...prev, activeId])
         break
     }
   }
@@ -297,26 +318,28 @@ export function DroppableSection() {
         <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Code Example</h3>
         <Card>
           <pre className="text-sm overflow-x-auto">
-            <code>{`import { useDroppable } from '@dnd-kit/core'
+            <code>{
+            `import { useDroppable } from '@dnd-kit/core'
 
-function DroppableArea({ id, children }) {
-  const { isOver, setNodeRef } = useDroppable({
-    id: id,
-    data: {
-      accepts: 'specific-type' // Optional type checking
-    }
-  })
+            function DroppableArea({ id, children }) {
+              const { isOver, setNodeRef } = useDroppable({
+                id: id,
+                data: {
+                  accepts: 'specific-type' // Optional type checking
+                }
+              })
 
-  return (
-    <div
-      ref={setNodeRef}
-      className={\`\${isOver ? 'bg-green-50' : 'bg-gray-50'} 
-        border-2 border-dashed rounded-lg p-4\`}
-    >
-      {children}
-    </div>
-  )
-}`}</code>
+              return (
+                <div
+                  ref={setNodeRef}
+                  className={\`\${isOver ? 'bg-green-50' : 'bg-gray-50'} 
+                    border-2 border-dashed rounded-lg p-4\`}
+                >
+                  {children}
+                </div>
+              )
+            }`
+            }</code>
           </pre>
         </Card>
       </div>

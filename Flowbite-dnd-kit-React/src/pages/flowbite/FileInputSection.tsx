@@ -1,18 +1,18 @@
 import { FileInput, Label } from 'flowbite-react'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseSubheading, ShowcaseDescription } from "../../components"
 
 export function FileInputSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">File Input</h2>
-      <p className="text-gray-600 mb-6">
+    <ShowcaseCard>
+      <ShowcaseHeading>File Input</ShowcaseHeading>
+      <ShowcaseDescription>
         Allow users to upload files with customizable file input components.
-      </p>
-      
+      </ShowcaseDescription>
+
       <div className="space-y-8">
         {/* Default File Input */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Default File Input</h3>
+          <ShowcaseSubheading>Default File Input</ShowcaseSubheading>
           <div className="space-y-4">
             <div>
               <Label htmlFor="file-upload" className="mb-2 block">
@@ -25,7 +25,7 @@ export function FileInputSection() {
 
         {/* File Input with Helper Text */}
         <div>
-          <h3 className="text-lg font-medium mb-4">File Input with Helper Text</h3>
+          <ShowcaseSubheading>File Input with Helper Text</ShowcaseSubheading>
           <div className="space-y-4">
             <div>
               <Label htmlFor="file-upload-helper-text" className="mb-2 block">
@@ -43,7 +43,7 @@ export function FileInputSection() {
 
         {/* Multiple File Input */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Multiple File Input</h3>
+          <ShowcaseSubheading>Multiple File Input</ShowcaseSubheading>
           <div className="space-y-4">
             <div>
               <Label htmlFor="multiple-file-upload" className="mb-2 block">
@@ -56,7 +56,7 @@ export function FileInputSection() {
 
         {/* File Input Sizes */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Different Sizes</h3>
+          <ShowcaseSubheading>Different Sizes</ShowcaseSubheading>
           <div className="space-y-4">
             <div>
               <Label htmlFor="small-file-input" className="mb-2 block">
@@ -83,7 +83,7 @@ export function FileInputSection() {
 
         {/* Disabled File Input */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Disabled State</h3>
+          <ShowcaseSubheading>Disabled State</ShowcaseSubheading>
           <div className="space-y-4">
             <div>
               <Label htmlFor="disabled-file-input" className="mb-2 block">
@@ -96,7 +96,7 @@ export function FileInputSection() {
 
         {/* Custom File Input */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Custom Styled File Input</h3>
+          <ShowcaseSubheading>Custom Styled File Input</ShowcaseSubheading>
           <div className="space-y-4">
             <div className="flex items-center justify-center w-full">
               <label
@@ -132,7 +132,7 @@ export function FileInputSection() {
 
         {/* File Input with Validation */}
         <div>
-          <h3 className="text-lg font-medium mb-4">File Input with Validation</h3>
+          <ShowcaseSubheading>File Input with Validation</ShowcaseSubheading>
           <div className="space-y-4">
             <div>
               <Label htmlFor="validated-file-input" className="mb-2 block">
@@ -154,7 +154,7 @@ export function FileInputSection() {
 
         {/* File Input with Accept Attribute */}
         <div>
-          <h3 className="text-lg font-medium mb-4">File Type Restrictions</h3>
+          <ShowcaseSubheading>File Type Restrictions</ShowcaseSubheading>
           <div className="space-y-4">
             <div>
               <Label htmlFor="image-upload" className="mb-2 block">
@@ -184,6 +184,6 @@ export function FileInputSection() {
           </div>
         </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

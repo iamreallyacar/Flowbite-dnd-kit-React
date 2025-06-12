@@ -1,10 +1,10 @@
 import { List, ListItem } from 'flowbite-react'
 import { FaCheck, FaStar, FaArrowRight, FaShoppingCart, FaUser, FaHome } from 'react-icons/fa'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard } from "../../components"
 
 export function ListSection() {
   return (
-    <ShowcaseSection>
+    <ShowcaseCard>
       <div>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">List Components</h2>
         <p className="text-gray-600 dark:text-gray-400 mb-6">
@@ -197,6 +197,6 @@ export function ListSection() {
           </div>
         </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

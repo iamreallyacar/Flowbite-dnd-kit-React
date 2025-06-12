@@ -1,10 +1,10 @@
 import { Progress } from 'flowbite-react'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function ProgressSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">Progress Bar</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Progress Bar</ShowcaseHeading>
       <p className="text-gray-600 mb-6">
         Show the completion progress of tasks or processes with customizable progress bars.
       </p>
@@ -136,6 +136,6 @@ export function ProgressSection() {
           </div>
         </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

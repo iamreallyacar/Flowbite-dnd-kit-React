@@ -1,10 +1,10 @@
 import { ListGroup, ListGroupItem } from 'flowbite-react'
 import { HiUserCircle, HiOutlineUserCircle } from 'react-icons/hi'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard } from "../../components"
 
 export function ListGroupSection() {
   return (
-    <ShowcaseSection>
+    <ShowcaseCard>
       <h2 className="text-2xl font-semibold mb-6">List Group</h2>
       <div className="space-y-4">
         <div className="max-w-md">
@@ -34,6 +34,6 @@ export function ListGroupSection() {
           </ListGroup>
         </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

@@ -1,12 +1,12 @@
 import { Tabs, TabItem } from 'flowbite-react'
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi'
 import { MdDashboard } from 'react-icons/md'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function TabsSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">Tabs</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Tabs</ShowcaseHeading>
       <p className="text-gray-600 mb-6">
         Organize content into multiple panels, allowing users to switch between different sections.
       </p>
@@ -135,6 +135,6 @@ export function TabsSection() {
           </Tabs>
         </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

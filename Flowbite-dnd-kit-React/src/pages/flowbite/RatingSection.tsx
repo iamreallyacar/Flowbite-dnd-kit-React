@@ -1,13 +1,13 @@
 import { Rating, RatingStar } from 'flowbite-react'
 import { useState } from 'react'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function RatingSection() {
   const [rating, setRating] = useState(4)
 
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">Rating</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Rating</ShowcaseHeading>
       <p className="text-gray-600 mb-6">
         Display user ratings and allow interactive rating input with customizable star components.
       </p>
@@ -207,6 +207,6 @@ export function RatingSection() {
           </div>
         </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

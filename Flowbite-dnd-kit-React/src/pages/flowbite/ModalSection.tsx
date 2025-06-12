@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'flowbite-react'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function ModalSection() {
   const [openModal, setOpenModal] = useState(false)
@@ -8,8 +8,8 @@ export function ModalSection() {
   const [openLargeModal, setOpenLargeModal] = useState(false)
 
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">Modal</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Modal</ShowcaseHeading>
       <p className="text-gray-600 mb-6">
         Interactive overlays for displaying content that requires user attention.
       </p>
@@ -84,6 +84,6 @@ export function ModalSection() {
           </ModalFooter>
         </Modal>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

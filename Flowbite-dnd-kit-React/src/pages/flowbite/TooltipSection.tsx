@@ -1,18 +1,17 @@
 import { Tooltip, Button } from 'flowbite-react'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSubsection } from "../../components"
 
 export function TooltipSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">Tooltip</h2>
-      <p className="text-gray-600 mb-6">
+    <ShowcaseCard>
+      <ShowcaseHeading>Tooltip</ShowcaseHeading>
+      <ShowcaseText>
         Display additional information when users hover over or focus on elements.
-      </p>
+      </ShowcaseText>
       
-      <div className="space-y-8">
-        {/* Default Tooltip */}
+      <div className="space-y-8">        {/* Default Tooltip */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Default Tooltip</h3>
+          <ShowcaseSubsection>Default Tooltip</ShowcaseSubsection>
           <div className="flex flex-wrap gap-4">
             <Tooltip content="Tooltip content">
               <Button>Default tooltip</Button>
@@ -148,11 +147,9 @@ export function TooltipSection() {
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
                   </svg>
                 </Tooltip>
-              </div>
-            </div>
-          </div>
+              </div>            </div>          </div>
         </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

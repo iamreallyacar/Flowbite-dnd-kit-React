@@ -11,8 +11,38 @@ import {
   TouchSensor,
   MouseSensor,
 } from '@dnd-kit/core'
-import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core'
-import { sortableKeyboardCoordinates } from '@dnd-kit/sortable'
+import type { DragEndEvent, DragStartEvent, KeyboardCoordinateGetter } from '@dnd-kit/core'
+
+// Custom keyboard coordinate getter for drag and drop
+const keyboardCoordinates: KeyboardCoordinateGetter = (event, { context: { active, collisionRect } }) => {
+  if (!active || !collisionRect) {
+    return
+  }
+
+  const { code } = event
+
+  if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(code)) {
+    event.preventDefault()
+
+    const movements = {
+      ArrowDown: [0, 25],
+      ArrowUp: [0, -25], 
+      ArrowLeft: [-25, 0],
+      ArrowRight: [25, 0],
+    }
+
+    const movement = movements[code as keyof typeof movements]
+
+    if (movement) {
+      return {
+        x: collisionRect.left + movement[0],
+        y: collisionRect.top + movement[1],
+      }
+    }
+  }
+
+  return undefined
+}
 
 interface SensorItem {
   id: string
@@ -27,14 +57,16 @@ function DraggableCard({ id, content }: SensorItem) {
   const style = transform ? {
     transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
   } : undefined
-
   return (
     <div
       ref={setNodeRef}
       style={style}
       {...listeners}
       {...attributes}
-      className={`cursor-grab ${isDragging ? 'opacity-50' : ''}`}
+      tabIndex={0}
+      role="button"
+      aria-label={`Draggable item: ${content}`}
+      className={`cursor-grab ${isDragging ? 'opacity-50' : ''} focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg`}
     >
       <Card className="hover:shadow-md transition-shadow">
         <div className="text-center p-2">
@@ -76,28 +108,33 @@ export function SensorsSection() {
   const [touchEnabled, setTouchEnabled] = useState(true)
   const [keyboardEnabled, setKeyboardEnabled] = useState(true)
   const [activationDistance, setActivationDistance] = useState(0)
-  const [activationDelay, setActivationDelay] = useState(0)
-
-  // Configure sensors based on settings
-  const sensors = useSensors(
-    ...[
-      mouseEnabled && useSensor(MouseSensor, {
-        activationConstraint: {
-          distance: activationDistance,
-          delay: activationDelay,
-        },
-      }),
-      touchEnabled && useSensor(TouchSensor, {
-        activationConstraint: {
-          distance: activationDistance,
-          delay: activationDelay,
-        },
-      }),
-      keyboardEnabled && useSensor(KeyboardSensor, {
-        coordinateGetter: sortableKeyboardCoordinates,
-      }),
-    ].filter(Boolean) as any[]
-  )
+  const [activationDelay, setActivationDelay] = useState(0)  // Configure sensors based on settings
+  const mouseSensor = useSensor(MouseSensor, {
+    activationConstraint: {
+      distance: activationDistance,
+      delay: activationDelay,
+    },
+  })
+  
+  const touchSensor = useSensor(TouchSensor, {
+    activationConstraint: {
+      distance: activationDistance,
+      delay: activationDelay,
+    },
+  })
+  
+  const keyboardSensor = useSensor(KeyboardSensor, {
+    coordinateGetter: keyboardCoordinates,
+  })
+  
+  // Build sensor list based on enabled settings
+  const enabledSensors = []
+  if (mouseEnabled) enabledSensors.push(mouseSensor)
+  if (touchEnabled) enabledSensors.push(touchSensor)
+  if (keyboardEnabled) enabledSensors.push(keyboardSensor)
+  
+  // Always provide at least one sensor to prevent issues
+  const sensors = enabledSensors.length > 0 ? useSensors(...enabledSensors) : useSensors(mouseSensor)
 
   function handleDragStart(event: DragStartEvent) {
     setActiveId(event.active.id as string)
@@ -219,8 +256,7 @@ export function SensorsSection() {
 
       {/* Interactive Demo */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Interactive Demo</h3>
-        <div className="mb-4 p-4 bg-blue-50 rounded-lg">
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Interactive Demo</h3>        <div className="mb-4 p-4 bg-blue-50 rounded-lg">
           <h4 className="font-medium text-blue-900 mb-2">How to test sensors:</h4>
           <ul className="text-sm text-blue-800 space-y-1">
             <li><strong>Mouse:</strong> Click and drag items</li>
@@ -228,8 +264,13 @@ export function SensorsSection() {
             <li><strong>Keyboard:</strong> Tab to focus item, press Space, then use arrow keys to move</li>
           </ul>
         </div>
-        
-        <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+          {enabledSensors.length === 0 ? (
+          <div className="p-8 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
+            <h4 className="text-lg font-medium text-yellow-800 mb-2">No Sensors Enabled</h4>
+            <p className="text-yellow-600">Please enable at least one sensor (Mouse, Touch, or Keyboard) to test drag and drop functionality.</p>
+          </div>
+        ) : (
+          <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Source Items */}
             <div>
@@ -264,12 +305,12 @@ export function SensorsSection() {
                   Use different input methods to drag items here
                 </div>
               )}
-            </DropZone>
-          </div>
+            </DropZone>          </div>
           <DragOverlay>
             {getActiveItem()}
           </DragOverlay>
         </DndContext>
+        )}
       </div>
 
       {/* Sensor Types */}

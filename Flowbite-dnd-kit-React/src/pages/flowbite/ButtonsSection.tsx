@@ -1,10 +1,10 @@
 import { Button } from 'flowbite-react'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function ButtonsSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold mb-6">Buttons</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Buttons</ShowcaseHeading>
       <div className="flex flex-wrap gap-4">
         <Button>Default</Button>
         <Button color="blue">Blue</Button>
@@ -18,6 +18,6 @@ export function ButtonsSection() {
         <Button size="lg">Large</Button>
         <Button size="xl">Extra Large</Button>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

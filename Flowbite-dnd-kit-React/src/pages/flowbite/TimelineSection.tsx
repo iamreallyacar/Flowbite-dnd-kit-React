@@ -1,11 +1,11 @@
 import { Timeline, TimelineItem, TimelinePoint, TimelineContent, TimelineTime, TimelineTitle, TimelineBody } from 'flowbite-react'
 import { HiCalendar, HiCheck, HiClock, HiDownload } from 'react-icons/hi'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function TimelineSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">Timeline</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Timeline</ShowcaseHeading>
       <p className="text-gray-600 mb-6">
         Display a sequence of events in chronological order with customizable timeline components.
       </p>
@@ -173,6 +173,6 @@ export function TimelineSection() {
           </Timeline>
         </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

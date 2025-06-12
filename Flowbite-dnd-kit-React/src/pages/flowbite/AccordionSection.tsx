@@ -1,13 +1,13 @@
 import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flowbite-react"
-import { ShowcaseSection, ShowcaseSectionH1 } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText } from "../../components"
 
 export function AccordionSection() {
   return (
-    <ShowcaseSection>
-      <ShowcaseSectionH1>Accordion</ShowcaseSectionH1>
-      <p className="text-gray-300 mb-6">
+    <ShowcaseCard>
+      <ShowcaseHeading>Accordion</ShowcaseHeading>
+      <ShowcaseText>
         Collapsible components to show and hide content sections.
-      </p>
+      </ShowcaseText>
       
       <div className="space-y-6">
         {/* Default Accordion */}
@@ -61,9 +61,8 @@ export function AccordionSection() {
                 </p>
               </AccordionContent>
             </AccordionPanel>
-          </Accordion>
-        </div>
+          </Accordion>        </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

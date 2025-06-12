@@ -23,6 +23,9 @@ interface DraggableCardProps {
   type: 'user' | 'file' | 'image'
   handle?: boolean
   disabled?: boolean
+  // Add these props for drag listeners when using handles
+  listeners?: any
+  attributes?: any
 }
 
 function DraggableItem({ id, children, handle = false, disabled = false }: DraggableItemProps) {
@@ -42,18 +45,17 @@ function DraggableItem({ id, children, handle = false, disabled = false }: Dragg
       ref={setNodeRef}
       style={style}
       {...dragProps}
-      className={`${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-grab'} 
+      className={`${disabled ? 'opacity-50 cursor-not-allowed' : !handle ? 'cursor-grab' : ''} 
         ${isDragging ? 'opacity-50' : ''}`}
-    >
-      {handle ? React.cloneElement(children as React.ReactElement, { 
-        ...listeners, 
-        ...attributes 
-      }) : children}
+    >      {handle ? React.cloneElement(children as React.ReactElement, { 
+        listeners: listeners, 
+        attributes: attributes 
+      } as any) : children}
     </div>
   )
 }
 
-function DraggableCard({ title, description, type, handle = false, disabled = false }: DraggableCardProps) {
+function DraggableCard({ title, description, type, handle = false, disabled = false, listeners, attributes }: DraggableCardProps) {
   const getIcon = () => {
     switch (type) {
       case 'user': return <FaUser className="text-blue-500" />
@@ -74,9 +76,12 @@ function DraggableCard({ title, description, type, handle = false, disabled = fa
 
   return (
     <Card className={`hover:shadow-md transition-shadow ${disabled ? 'bg-gray-100' : ''}`}>
+      <div className="flex items-center space-x-3">
         {handle && (
           <div 
-            className="cursor-grab text-gray-400 hover:text-gray-600"
+            className="cursor-grab text-gray-400 hover:text-gray-600 p-1"
+            {...listeners}
+            {...attributes}
           >
             <FaGripVertical />
           </div>
@@ -91,6 +96,7 @@ function DraggableCard({ title, description, type, handle = false, disabled = fa
           </div>
           <p className="text-xs text-gray-500 truncate">{description}</p>
         </div>
+      </div>
     </Card>
   )
 }
@@ -126,9 +132,7 @@ export function DraggableSection() {
 
   function handleDragStart(event: DragStartEvent) {
     setActiveId(event.active.id as string)
-  }
-
-  function handleDragEnd(event: DragEndEvent) {
+  }  function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event
     setActiveId(null)
 
@@ -212,21 +216,24 @@ export function DraggableSection() {
             {getActiveItem()}
           </DragOverlay>
         </DndContext>
-      </div>
-
-      {/* Drag Handle Example */}
+      </div>      {/* Drag Handle Example */}
       <div>
         <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Drag Handles</h3>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
           Items with drag handles can only be dragged by clicking on the handle area.
         </p>
-        <div className="space-y-3">
-          {items.slice(0, 3).map((item) => (
-            <DraggableItem key={`handle-${item.id}`} id={`handle-${item.id}`} handle>
-              <DraggableCard {...item} handle />
-            </DraggableItem>
-          ))}
-        </div>
+        <DndContext onDragStart={handleDragStart} onDragEnd={() => setActiveId(null)}>
+          <div className="space-y-3">
+            {items.slice(0, 3).map((item) => (
+              <DraggableItem key={`handle-${item.id}`} id={`handle-${item.id}`} handle>
+                <DraggableCard {...item} handle />
+              </DraggableItem>
+            ))}
+          </div>
+          <DragOverlay>
+            {getActiveItem()}
+          </DragOverlay>
+        </DndContext>
       </div>
 
       {/* Disabled State Example */}

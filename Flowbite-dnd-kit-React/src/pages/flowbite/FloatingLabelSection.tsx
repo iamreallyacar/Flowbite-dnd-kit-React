@@ -1,10 +1,10 @@
 import { FloatingLabel } from 'flowbite-react'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function FloatingLabelSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">Floating Label</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Floating Label</ShowcaseHeading>
       <p className="text-gray-600 mb-6">
         Input fields with floating labels that animate when the user focuses or enters content.
       </p>
@@ -153,6 +153,6 @@ export function FloatingLabelSection() {
           </div>
         </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

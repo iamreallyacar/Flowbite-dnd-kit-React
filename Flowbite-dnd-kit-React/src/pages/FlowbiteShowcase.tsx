@@ -35,7 +35,7 @@ import {
   ToastSection,
   TooltipSection
 } from './flowbite'
-import { ShowcaseSectionTitle, ShowcaseSectionSubtitle } from '../components/ShowcaseSection'
+import { ShowcaseDescription, ShowcaseTitle } from '../components/ShowcaseTheme'
 
 export function FlowbiteShowcase() {  return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8">
@@ -44,12 +44,12 @@ export function FlowbiteShowcase() {  return (
           <Link to="/" className="text-blue-600 dark:text-blue-400 hover:underline mb-4 inline-block">
             ← Back to Main
           </Link>
-          <ShowcaseSectionTitle>
+          <ShowcaseTitle>
             Flowbite React Components Showcase
-          </ShowcaseSectionTitle>
-          <ShowcaseSectionSubtitle>
-            Subtitle 1
-          </ShowcaseSectionSubtitle>
+          </ShowcaseTitle>
+          <ShowcaseDescription>
+            Page to show how to use Flowbite React components in a project.
+          </ShowcaseDescription>
         </div>
         <AccordionSection />
         <AlertsSection />

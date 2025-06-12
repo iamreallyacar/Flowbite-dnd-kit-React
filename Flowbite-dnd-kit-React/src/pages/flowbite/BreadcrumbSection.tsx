@@ -1,12 +1,13 @@
 import { Breadcrumb, BreadcrumbItem } from 'flowbite-react'
 import { HiHome } from 'react-icons/hi'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function BreadcrumbSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold mb-6">Breadcrumb</h2>
-      <div className="space-y-4">        <Breadcrumb aria-label="Default breadcrumb example">
+    <ShowcaseCard>
+      <ShowcaseHeading>Breadcrumb</ShowcaseHeading>
+      <div className="space-y-4">
+        <Breadcrumb aria-label="Default breadcrumb example">
           <BreadcrumbItem href="#" icon={HiHome}>
             Home
           </BreadcrumbItem>
@@ -22,6 +23,6 @@ export function BreadcrumbSection() {
           <BreadcrumbItem>Flowbite React</BreadcrumbItem>
         </Breadcrumb>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

@@ -1,10 +1,10 @@
 import { Spinner } from 'flowbite-react'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function SpinnerSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">Spinner</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Spinner</ShowcaseHeading>
       <p className="text-gray-600 mb-6">
         Loading indicators to show users that content is being processed or loaded.
       </p>
@@ -172,6 +172,6 @@ export function SpinnerSection() {
           </div>
         </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

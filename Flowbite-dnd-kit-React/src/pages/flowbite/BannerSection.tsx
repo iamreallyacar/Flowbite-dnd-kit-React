@@ -1,12 +1,12 @@
 import { Banner, Button } from 'flowbite-react'
 import { HiX } from 'react-icons/hi'
 import { MdAnnouncement } from 'react-icons/md'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function BannerSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold text-gray-200 mb-6">Banner</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Banner</ShowcaseHeading>
       <div className="space-y-4">
         <Banner>
           <div className="flex w-full justify-between border-b border-gray-200 bg-gray-200 p-4">
@@ -79,6 +79,6 @@ export function BannerSection() {
           </div>
         </Banner>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

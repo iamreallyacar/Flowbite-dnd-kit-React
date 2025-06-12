@@ -34,7 +34,7 @@ function DraggableItem({ id, children }: DraggableItemProps) {
       style={style}
       {...listeners}
       {...attributes}
-      className={`cursor-grab ${isDragging ? 'opacity-50' : ''}`}
+      className={`cursor-grab ${isDragging ? 'opacity-30' : ''}`}
     >
       {children}
     </div>
@@ -67,13 +67,17 @@ export function DndContextSection() {
 
   function handleDragStart(event: DragStartEvent) {
     setActiveId(event.active.id as string)
-  }
-
-  function handleDragEnd(event: DragEndEvent) {
+  }  function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event
     setActiveId(null)
 
-    if (!over) return
+    console.log('Drag ended:', { activeId: active.id, overId: over?.id || 'no drop target' })
+
+    // If no valid drop target, do nothing (item stays in original position)
+    if (!over) {
+      console.log('No drop target - item should stay in original position')
+      return
+    }
 
     const activeId = active.id as string
     const overId = over.id as string
@@ -83,19 +87,39 @@ export function DndContextSection() {
       activeId && items[key as keyof typeof items].includes(activeId)
     ) as keyof typeof items
 
+    console.log('Active container:', activeContainer)
+
     if (!activeContainer) return
 
-    // If dropping on a container
-    if (Object.keys(items).includes(overId)) {
-      const overContainer = overId as keyof typeof items
+    // Determine the target container
+    let overContainer: keyof typeof items | undefined
 
-      if (activeContainer !== overContainer) {
-        setItems(prev => ({
-          ...prev,
-          [activeContainer]: prev[activeContainer].filter(id => id !== activeId),
-          [overContainer]: [...prev[overContainer], activeId],
-        }))
-      }
+    // Check if dropping directly on a container
+    if (Object.keys(items).includes(overId)) {
+      overContainer = overId as keyof typeof items
+      console.log('Dropping directly on container:', overContainer)
+    } else {
+      // Check if dropping on an item within a container
+      overContainer = Object.keys(items).find(key =>
+        items[key as keyof typeof items].includes(overId)
+      ) as keyof typeof items
+      console.log('Dropping on item within container:', overContainer)
+    }
+
+    if (!overContainer) {
+      console.log('Could not determine target container')
+      return
+    }
+
+    // Only move if dropping on a different container
+    if (activeContainer !== overContainer) {
+      console.log('Moving item from', activeContainer, 'to', overContainer)
+      setItems(prev => ({
+        ...prev,
+        [activeContainer]: prev[activeContainer].filter(id => id !== activeId),
+        [overContainer]: [...prev[overContainer], activeId],      }))
+    } else {
+      console.log('Same container - no move needed')
     }
   }
 

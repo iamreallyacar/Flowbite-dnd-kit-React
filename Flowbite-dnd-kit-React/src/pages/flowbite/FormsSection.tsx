@@ -1,10 +1,10 @@
 import { Button, Label, TextInput, Textarea, Select, Checkbox, Radio } from 'flowbite-react'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function FormsSection() {
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold mb-6">Forms</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Forms</ShowcaseHeading>
       <div className="max-w-md space-y-4">
         <div>
           <div className="mb-2 block">
@@ -61,6 +61,6 @@ export function FormsSection() {
         </fieldset>
         <Button type="submit">Submit</Button>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }

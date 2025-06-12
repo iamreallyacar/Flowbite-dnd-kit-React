@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Pagination } from 'flowbite-react'
-import { ShowcaseSection } from "../../components/ShowcaseSection"
+import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function PaginationSection() {
   const [currentPage, setCurrentPage] = useState(1)
@@ -10,8 +10,8 @@ export function PaginationSection() {
   const onPageChange2 = (page: number) => setCurrentPage2(page)
 
   return (
-    <ShowcaseSection>
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">Pagination</h2>
+    <ShowcaseCard>
+      <ShowcaseHeading>Pagination</ShowcaseHeading>
       <p className="text-gray-600 mb-6">
         Navigate through multiple pages of content with pagination controls.
       </p>
@@ -101,6 +101,6 @@ export function PaginationSection() {
           </div>
         </div>
       </div>
-    </ShowcaseSection>
+    </ShowcaseCard>
   )
 }
