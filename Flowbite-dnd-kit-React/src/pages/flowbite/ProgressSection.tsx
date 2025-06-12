@@ -1,8 +1,9 @@
 import { Progress } from 'flowbite-react'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function ProgressSection() {
   return (
-    <section className="mb-12 bg-white rounded-lg shadow-sm p-6">
+    <ShowcaseSection>
       <h2 className="text-2xl font-semibold text-gray-900 mb-4">Progress Bar</h2>
       <p className="text-gray-600 mb-6">
         Show the completion progress of tasks or processes with customizable progress bars.
@@ -135,6 +136,6 @@ export function ProgressSection() {
           </div>
         </div>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

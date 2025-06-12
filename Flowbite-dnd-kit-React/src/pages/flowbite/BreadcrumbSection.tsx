@@ -1,9 +1,10 @@
 import { Breadcrumb, BreadcrumbItem } from 'flowbite-react'
 import { HiHome } from 'react-icons/hi'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function BreadcrumbSection() {
   return (
-    <section className="mb-12">
+    <ShowcaseSection>
       <h2 className="text-2xl font-semibold mb-6">Breadcrumb</h2>
       <div className="space-y-4">        <Breadcrumb aria-label="Default breadcrumb example">
           <BreadcrumbItem href="#" icon={HiHome}>
@@ -21,6 +22,6 @@ export function BreadcrumbSection() {
           <BreadcrumbItem>Flowbite React</BreadcrumbItem>
         </Breadcrumb>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

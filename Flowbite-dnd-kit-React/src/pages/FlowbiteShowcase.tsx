@@ -35,6 +35,7 @@ import {
   ToastSection,
   TooltipSection
 } from './flowbite'
+import { ShowcaseSectionTitle, ShowcaseSectionSubtitle } from '../components/ShowcaseSection'
 
 export function FlowbiteShowcase() {  return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8">
@@ -43,13 +44,14 @@ export function FlowbiteShowcase() {  return (
           <Link to="/" className="text-blue-600 dark:text-blue-400 hover:underline mb-4 inline-block">
             ← Back to Main
           </Link>
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+          <ShowcaseSectionTitle>
             Flowbite React Components Showcase
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            Explore various Flowbite React components integrated with Tailwind CSS
-          </p>
-        </div>        <AccordionSection />
+          </ShowcaseSectionTitle>
+          <ShowcaseSectionSubtitle>
+            Subtitle 1
+          </ShowcaseSectionSubtitle>
+        </div>
+        <AccordionSection />
         <AlertsSection />
         <AvatarSection />
         <BadgesSection />

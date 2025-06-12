@@ -1,8 +1,9 @@
 import { HR, HRTrimmed } from 'flowbite-react'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function HRSection() {
   return (
-    <section className="mb-12 bg-white rounded-lg shadow-sm p-6">
+    <ShowcaseSection>
       <h2 className="text-2xl font-semibold text-gray-900 mb-4">Horizontal Rule (HR)</h2>
       <p className="text-gray-600 mb-6">
         Create visual separation between content sections with horizontal divider lines.
@@ -166,6 +167,6 @@ export function HRSection() {
           </div>
         </div>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

@@ -1,5 +1,6 @@
 import { Button, Drawer } from 'flowbite-react'
 import { useState } from 'react'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function DrawerSection() {
   const [isOpen, setIsOpen] = useState(false)
@@ -7,7 +8,7 @@ export function DrawerSection() {
   const [isTopOpen, setIsTopOpen] = useState(false)
 
   return (
-    <section className="mb-12 bg-white rounded-lg shadow-sm p-6">
+    <ShowcaseSection>
       <h2 className="text-2xl font-semibold text-gray-900 mb-4">Drawer</h2>
       <p className="text-gray-600 mb-6">
         Slide-over panels that overlay content from the side, top, or bottom of the screen.
@@ -96,6 +97,6 @@ export function DrawerSection() {
           </div>
         </Drawer>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

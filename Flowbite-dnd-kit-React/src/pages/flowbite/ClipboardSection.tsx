@@ -1,6 +1,7 @@
 import { Button } from 'flowbite-react'
 import { useState } from 'react'
 import { HiClipboard, HiCheck } from 'react-icons/hi'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function ClipboardSection() {
   const [copied, setCopied] = useState(false)
@@ -13,7 +14,7 @@ export function ClipboardSection() {
   }
 
   return (
-    <section className="mb-12">
+    <ShowcaseSection>
       <h2 className="text-2xl font-semibold mb-6">Clipboard</h2>
       <div className="space-y-4">
         <div className="relative">
@@ -48,6 +49,6 @@ export function ClipboardSection() {
           </Button>
         </div>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

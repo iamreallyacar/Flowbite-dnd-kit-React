@@ -1,8 +1,9 @@
 import { Tooltip, Button } from 'flowbite-react'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function TooltipSection() {
   return (
-    <section className="mb-12 bg-white rounded-lg shadow-sm p-6">
+    <ShowcaseSection>
       <h2 className="text-2xl font-semibold text-gray-900 mb-4">Tooltip</h2>
       <p className="text-gray-600 mb-6">
         Display additional information when users hover over or focus on elements.
@@ -152,6 +153,6 @@ export function TooltipSection() {
           </div>
         </div>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

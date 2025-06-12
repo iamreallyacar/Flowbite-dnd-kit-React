@@ -1,9 +1,10 @@
 import { Avatar } from 'flowbite-react'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function AvatarSection() {
   return (
-    <section className="mb-12">
-      <h2 className="text-2xl font-semibold mb-6">Avatar</h2>
+    <ShowcaseSection>
+      <h2 className="text-2xl font-semibold text-gray-200 mb-6">Avatar</h2>
       <div className="flex flex-wrap gap-6 items-center">
         <div className="flex flex-col items-center gap-2">
           <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" />
@@ -34,6 +35,6 @@ export function AvatarSection() {
           <span className="text-sm text-gray-600">Initials</span>
         </div>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

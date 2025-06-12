@@ -1,8 +1,9 @@
 import { Datepicker } from 'flowbite-react'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function DatepickerSection() {
   return (
-    <section className="mb-12">
+    <ShowcaseSection>
       <h2 className="text-2xl font-semibold mb-6">Datepicker</h2>
       <div className="space-y-4">
         <div className="max-w-sm">
@@ -12,6 +13,6 @@ export function DatepickerSection() {
           <Datepicker inline />
         </div>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

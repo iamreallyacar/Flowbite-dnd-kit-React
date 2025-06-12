@@ -1,9 +1,10 @@
 import { Badge } from 'flowbite-react'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function BadgesSection() {
   return (
-    <section className="mb-12">
-      <h2 className="text-2xl font-semibold mb-6">Badges</h2>
+    <ShowcaseSection>
+      <h2 className="text-2xl font-semibold text-gray-200 mb-6">Badges</h2>
       <div className="flex flex-wrap gap-4">
         <Badge>Default</Badge>
         <Badge color="blue">Blue</Badge>
@@ -14,6 +15,6 @@ export function BadgesSection() {
         <Badge size="sm">Small</Badge>
         <Badge size="lg">Large</Badge>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

@@ -4,11 +4,12 @@ import {
   HiCheck, 
   HiX
 } from 'react-icons/hi'
+import { ShowcaseSection, ShowcaseSectionH1 } from "../../components/ShowcaseSection"
 
 export function AlertsSection() {
   return (
-    <section className="mb-12">
-      <h2 className="text-2xl font-semibold mb-6">Alerts</h2>
+    <ShowcaseSection>
+      <ShowcaseSectionH1>Alerts</ShowcaseSectionH1>
       <div className="space-y-4">
         <Alert color="info" icon={HiInformationCircle}>
           <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
@@ -23,6 +24,6 @@ export function AlertsSection() {
           <span className="font-medium">Error alert!</span> Something went wrong.
         </Alert>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

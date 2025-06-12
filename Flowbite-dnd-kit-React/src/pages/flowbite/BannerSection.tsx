@@ -1,14 +1,15 @@
 import { Banner, Button } from 'flowbite-react'
 import { HiX } from 'react-icons/hi'
 import { MdAnnouncement } from 'react-icons/md'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function BannerSection() {
   return (
-    <section className="mb-12">
-      <h2 className="text-2xl font-semibold mb-6">Banner</h2>
+    <ShowcaseSection>
+      <h2 className="text-2xl font-semibold text-gray-200 mb-6">Banner</h2>
       <div className="space-y-4">
         <Banner>
-          <div className="flex w-full justify-between border-b border-gray-200 bg-gray-50 p-4">
+          <div className="flex w-full justify-between border-b border-gray-200 bg-gray-200 p-4">
             <div className="mx-auto flex items-center">
               <p className="flex items-center text-sm font-normal text-gray-500">
                 <MdAnnouncement className="mr-4 h-4 w-4" />
@@ -16,7 +17,7 @@ export function BannerSection() {
                   New brand identity has been launched for the{' '}
                   <a
                     href="https://flowbite.com"
-                    className="decoration-600 decoration-solid underline underline-offset-2 hover:decoration-blue-700"
+                    className="decoration-1 decoration-solid underline underline-offset-2 hover:decoration-blue-700"
                   >
                     Flowbite Library
                   </a>
@@ -30,7 +31,7 @@ export function BannerSection() {
         </Banner>
 
         <Banner>
-          <div className="flex w-full flex-col justify-between rounded-lg border border-gray-100 bg-white p-4 shadow-sm md:flex-row">
+          <div className="flex w-full flex-col justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:flex-row">
             <div className="mb-3 mr-4 flex flex-col items-start md:mb-0 md:flex-row md:items-center">
               <a
                 href="https://flowbite.com/"
@@ -78,6 +79,6 @@ export function BannerSection() {
           </div>
         </Banner>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

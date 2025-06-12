@@ -1,8 +1,9 @@
 import { Button, Label, TextInput, Textarea, Select, Checkbox, Radio } from 'flowbite-react'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function FormsSection() {
   return (
-    <section className="mb-12">
+    <ShowcaseSection>
       <h2 className="text-2xl font-semibold mb-6">Forms</h2>
       <div className="max-w-md space-y-4">
         <div>
@@ -60,6 +61,6 @@ export function FormsSection() {
         </fieldset>
         <Button type="submit">Submit</Button>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

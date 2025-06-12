@@ -1,8 +1,9 @@
 import { Kbd } from 'flowbite-react'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function KBDSection() {
   return (
-    <section className="mb-12">
+    <ShowcaseSection>
       <h2 className="text-2xl font-semibold mb-6">KBD (Keyboard Keys)</h2>
       <div className="space-y-4">
         <p>
@@ -18,6 +19,6 @@ export function KBDSection() {
           Arrow keys: <Kbd>↑</Kbd> <Kbd>↓</Kbd> <Kbd>←</Kbd> <Kbd>→</Kbd>
         </p>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

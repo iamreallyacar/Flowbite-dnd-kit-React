@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Toast, ToastToggle } from 'flowbite-react'
 import { HiCheck, HiExclamation, HiFire, HiX } from 'react-icons/hi'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function ToastSection() {
   const [showToast1, setShowToast1] = useState(true)
@@ -9,7 +10,7 @@ export function ToastSection() {
   const [showToast4, setShowToast4] = useState(true)
 
   return (
-    <section className="mb-12 bg-white rounded-lg shadow-sm p-6">
+    <ShowcaseSection>
       <h2 className="text-2xl font-semibold text-gray-900 mb-4">Toast</h2>
       <p className="text-gray-600 mb-6">
         Show non-intrusive notifications to users with customizable toast messages.
@@ -165,6 +166,6 @@ export function ToastSection() {
           </Toast>
         </div>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }

@@ -1,8 +1,9 @@
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle, Dropdown, DropdownDivider, DropdownHeader, DropdownItem, Avatar } from 'flowbite-react'
+import { ShowcaseSection } from "../../components/ShowcaseSection"
 
 export function NavbarSection() {
   return (
-    <section className="mb-12 bg-white rounded-lg shadow-sm p-6">
+    <ShowcaseSection>
       <h2 className="text-2xl font-semibold text-gray-900 mb-4">Navbar</h2>
       <p className="text-gray-600 mb-6">
         Responsive navigation headers with branding, navigation, and more.
@@ -105,6 +106,6 @@ export function NavbarSection() {
           </Navbar>
         </div>
       </div>
-    </section>
+    </ShowcaseSection>
   )
 }
