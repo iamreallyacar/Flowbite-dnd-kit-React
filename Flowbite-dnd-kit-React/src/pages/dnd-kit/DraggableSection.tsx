@@ -47,10 +47,10 @@ function DraggableItem({ id, children, handle = false, disabled = false }: Dragg
       {...dragProps}
       className={`${disabled ? 'opacity-50 cursor-not-allowed' : !handle ? 'cursor-grab' : ''} 
         ${isDragging ? 'opacity-50' : ''}`}
-    >      {handle ? React.cloneElement(children as React.ReactElement, { 
-        listeners: listeners, 
-        attributes: attributes 
-      } as any) : children}
+    >      {handle ? React.cloneElement(children as React.ReactElement, {
+      listeners: listeners,
+      attributes: attributes
+    } as any) : children}
     </div>
   )
 }
@@ -78,7 +78,7 @@ function DraggableCard({ title, description, type, handle = false, disabled = fa
     <Card className={`hover:shadow-md transition-shadow ${disabled ? 'bg-gray-100' : ''}`}>
       <div className="flex items-center space-x-3">
         {handle && (
-          <div 
+          <div
             className="cursor-grab text-gray-400 hover:text-gray-600 p-1"
             {...listeners}
             {...attributes}
@@ -132,7 +132,7 @@ export function DraggableSection() {
 
   function handleDragStart(event: DragStartEvent) {
     setActiveId(event.active.id as string)
-  }  function handleDragEnd(event: DragEndEvent) {
+  } function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event
     setActiveId(null)
 
@@ -152,7 +152,7 @@ export function DraggableSection() {
     if (!activeId) return null
     const item = items.find(item => item.id === activeId)
     if (!item) return null
-    
+
     return (
       <Card className="w-64 opacity-90">
         <DraggableCard {...item} />
@@ -178,7 +178,7 @@ export function DraggableSection() {
             Reset
           </Button>
         </div>
-        
+
         <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Source Items */}
@@ -246,11 +246,11 @@ export function DraggableSection() {
           <div>
             <h5 className="font-medium mb-2">Enabled</h5>
             <DraggableItem id="enabled-example" disabled={false}>
-              <DraggableCard 
-                id="enabled" 
-                title="Enabled Item" 
-                description="This item can be dragged" 
-                type="user" 
+              <DraggableCard
+                id="enabled"
+                title="Enabled Item"
+                description="This item can be dragged"
+                type="user"
                 disabled={false}
               />
             </DraggableItem>
@@ -258,11 +258,11 @@ export function DraggableSection() {
           <div>
             <h5 className="font-medium mb-2">Disabled</h5>
             <DraggableItem id="disabled-example" disabled={true}>
-              <DraggableCard 
-                id="disabled" 
-                title="Disabled Item" 
-                description="This item cannot be dragged" 
-                type="user" 
+              <DraggableCard
+                id="disabled"
+                title="Disabled Item"
+                description="This item cannot be dragged"
+                type="user"
                 disabled={true}
               />
             </DraggableItem>
@@ -283,7 +283,7 @@ export function DraggableSection() {
               <li><code className="bg-gray-100 px-2 py-1 rounded">attributes</code> - Accessibility attributes</li>
             </ul>
           </Card>
-          
+
           <Card>
             <h4 className="text-lg font-semibold mb-3">Returned Values</h4>
             <ul className="space-y-2 text-sm">
@@ -303,38 +303,39 @@ export function DraggableSection() {
         <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Code Example</h3>
         <Card>
           <pre className="text-sm overflow-x-auto">
-            <code>{`import { useDraggable } from '@dnd-kit/core'
+            <code>{
+            `import { useDraggable } from '@dnd-kit/core'
 
-function DraggableItem({ id, children }) {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    isDragging,
-  } = useDraggable({
-    id: id,
-    data: {
-      type: 'custom-type', // Optional custom data
-    }
-  })
+            function DraggableItem({ id, children }) {
+              const {
+                attributes,
+                listeners,
+                setNodeRef,
+                transform,
+                isDragging,
+              } = useDraggable({
+                id: id,
+                data: {
+                  type: 'custom-type', // Optional custom data
+                }
+              })
 
-  const style = transform ? {
-    transform: \`translate3d(\${transform.x}px, \${transform.y}px, 0)\`,
-  } : undefined
+              const style = transform ? {
+                transform: \`translate3d(\${transform.x}px, \${transform.y}px, 0)\`,
+              } : undefined
 
-  return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      {...listeners}
-      {...attributes}
-      className={\`cursor-grab \${isDragging ? 'opacity-50' : ''}\`}
-    >
-      {children}
-    </div>
-  )
-}`}</code>
+              return (
+                <div
+                  ref={setNodeRef}
+                  style={style}
+                  {...listeners}
+                  {...attributes}
+                  className={\`cursor-grab \${isDragging ? 'opacity-50' : ''}\`}
+                >
+                  {children}
+                </div>
+              )
+            }`}</code>
           </pre>
         </Card>
       </div>
