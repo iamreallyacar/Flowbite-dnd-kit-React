@@ -7,7 +7,7 @@ import {
   useDroppable,
 } from '@dnd-kit/core'
 import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core'
-import { FaGripVertical, FaUser, FaFile, FaImage } from 'react-icons/fa'
+import { FaGripVertical, FaCog, FaClipboard, FaTools } from 'react-icons/fa'
 
 interface DraggableItemProps {
   id: string
@@ -16,11 +16,13 @@ interface DraggableItemProps {
   disabled?: boolean
 }
 
-interface DraggableCardProps {
+interface DraggableJobProps {
   id: string
   title: string
   description: string
-  type: 'user' | 'file' | 'image'
+  type: 'assembly' | 'machining' | 'quality'
+  priority: 'high' | 'medium' | 'low'
+  duration: string
   handle?: boolean
   disabled?: boolean
   // Add these props for drag listeners when using handles
@@ -55,21 +57,30 @@ function DraggableItem({ id, children, handle = false, disabled = false }: Dragg
   )
 }
 
-function DraggableCard({ title, description, type, handle = false, disabled = false, listeners, attributes }: DraggableCardProps) {
+function DraggableCard({ title, description, type, priority, duration, handle = false, disabled = false, listeners, attributes }: DraggableJobProps) {
   const getIcon = () => {
     switch (type) {
-      case 'user': return <FaUser className="text-blue-500" />
-      case 'file': return <FaFile className="text-green-500" />
-      case 'image': return <FaImage className="text-purple-500" />
-      default: return <FaFile className="text-gray-500" />
+      case 'assembly': return <FaTools className="text-blue-500" />
+      case 'machining': return <FaCog className="text-green-500" />
+      case 'quality': return <FaClipboard className="text-purple-500" />
+      default: return <FaCog className="text-gray-500" />
     }
   }
 
-  const getColor = () => {
+  const getTypeColor = () => {
     switch (type) {
-      case 'user': return 'info'
-      case 'file': return 'success'
-      case 'image': return 'purple'
+      case 'assembly': return 'info'
+      case 'machining': return 'success'
+      case 'quality': return 'purple'
+      default: return 'gray'
+    }
+  }
+
+  const getPriorityColor = () => {
+    switch (priority) {
+      case 'high': return 'red'
+      case 'medium': return 'yellow'
+      case 'low': return 'green'
       default: return 'gray'
     }
   }
@@ -90,11 +101,15 @@ function DraggableCard({ title, description, type, handle = false, disabled = fa
           {getIcon()}
         </div>
         <div className="flex-grow min-w-0">
-          <div className="flex items-center space-x-2 mb-1">
+          <div className="flex items-center justify-between mb-1">
             <h4 className="text-sm font-medium text-gray-900 truncate">{title}</h4>
-            <Badge color={getColor()} size="sm">{type}</Badge>
+            <div className="flex space-x-1">
+              <Badge color={getTypeColor()} size="sm">{type}</Badge>
+              <Badge color={getPriorityColor()} size="sm">{priority}</Badge>
+            </div>
           </div>
           <p className="text-xs text-gray-500 truncate">{description}</p>
+          <p className="text-xs text-blue-600 font-medium">{duration}</p>
         </div>
       </div>
     </Card>
@@ -120,11 +135,11 @@ function DropZone({ id, title, children }: { id: string, title: string, children
 
 export function DraggableSection() {
   const [items] = useState([
-    { id: 'user-1', title: 'John Doe', description: 'Software Developer', type: 'user' as const },
-    { id: 'file-1', title: 'Document.pdf', description: '2.3 MB • PDF Document', type: 'file' as const },
-    { id: 'image-1', title: 'Photo.jpg', description: '1.8 MB • JPEG Image', type: 'image' as const },
-    { id: 'user-2', title: 'Jane Smith', description: 'UX Designer', type: 'user' as const },
-    { id: 'file-2', title: 'Spreadsheet.xlsx', description: '456 KB • Excel File', type: 'file' as const },
+    { id: 'job-1', title: 'Widget Assembly - Order #PO-158', description: 'Assemble 1000 widget units', type: 'assembly' as const, priority: 'high' as const, duration: '4 hours' },
+    { id: 'job-2', title: 'CNC Machining - Gear Production', description: 'Machine 500 precision gears', type: 'machining' as const, priority: 'medium' as const, duration: '6 hours' },
+    { id: 'job-3', title: 'Quality Control - Batch QC-24-890', description: 'Quality inspection for motor assembly', type: 'quality' as const, priority: 'high' as const, duration: '2 hours' },
+    { id: 'job-4', title: 'Motor Assembly - Order #PO-159', description: 'Assemble 200 electric motors', type: 'assembly' as const, priority: 'low' as const, duration: '8 hours' },
+    { id: 'job-5', title: 'Surface Treatment - Coating Process', description: 'Apply protective coating to 300 parts', type: 'machining' as const, priority: 'medium' as const, duration: '3 hours' },
   ])
 
   const [droppedItems, setDroppedItems] = useState<string[]>([])
@@ -160,13 +175,12 @@ export function DraggableSection() {
     )
   }
 
-  return (
-    <div className="space-y-8 mb-12">
+  return (    <div className="space-y-8 mb-12">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Draggable Elements</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Draggable Production Jobs</h2>
         <p className="text-gray-600 dark:text-gray-400 mb-6">
-          Draggable components can be moved around the screen. They support various configurations including
-          drag handles, disabled states, and custom data.
+          Production jobs can be dragged and dropped to reassign them between machines, work centers, or time slots.
+          This demonstrates how drag-and-drop interfaces can streamline production scheduling workflows.
         </p>
       </div>
 
@@ -242,15 +256,16 @@ export function DraggableSection() {
         <p className="text-gray-600 dark:text-gray-400 mb-4">
           Draggable items can be disabled to prevent interaction.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">          <div>
             <h5 className="font-medium mb-2">Enabled</h5>
             <DraggableItem id="enabled-example" disabled={false}>
               <DraggableCard
                 id="enabled"
-                title="Enabled Item"
-                description="This item can be dragged"
-                type="user"
+                title="Quality Check - Enabled"
+                description="This job can be dragged to schedule"
+                type="quality"
+                priority="medium"
+                duration="1 hour"
                 disabled={false}
               />
             </DraggableItem>
@@ -260,9 +275,11 @@ export function DraggableSection() {
             <DraggableItem id="disabled-example" disabled={true}>
               <DraggableCard
                 id="disabled"
-                title="Disabled Item"
-                description="This item cannot be dragged"
-                type="user"
+                title="Maintenance Job - Disabled"
+                description="This job is locked and cannot be moved"
+                type="machining"
+                priority="high"
+                duration="4 hours"
                 disabled={true}
               />
             </DraggableItem>

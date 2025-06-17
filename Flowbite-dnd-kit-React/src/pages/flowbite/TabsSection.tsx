@@ -1,40 +1,38 @@
 import { Tabs, TabItem } from 'flowbite-react'
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi'
 import { MdDashboard } from 'react-icons/md'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSectionHeader, ShowcaseSmallText } from "../../components"
 
 export function TabsSection() {
   return (
     <ShowcaseCard>
-      <ShowcaseHeading>Tabs</ShowcaseHeading>
-      <p className="text-gray-600 mb-6">
-        Organize content into multiple panels, allowing users to switch between different sections.
-      </p>
+      <ShowcaseHeading>Production Dashboard Tabs</ShowcaseHeading>
+      <ShowcaseText>
+        Organize production data, machine status, and order information into tabbed sections for easy navigation.
+      </ShowcaseText>
       
       <div className="space-y-8">
         {/* Default Tabs */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Default Tabs</h3>
+          <ShowcaseSectionHeader>Default Tabs</ShowcaseSectionHeader>
           <Tabs aria-label="Default tabs">
             <TabItem active title="Profile">
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <ShowcaseSmallText>
                 This is some placeholder content the <strong className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.
-              </p>
+              </ShowcaseSmallText>
             </TabItem>
-            <TabItem title="Dashboard">
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+            <TabItem title="Dashboard">              <ShowcaseSmallText>
                 This is some placeholder content the <strong className="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.
-              </p>
+              </ShowcaseSmallText>
             </TabItem>
             <TabItem title="Settings">
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <ShowcaseSmallText>
                 This is some placeholder content the <strong className="font-medium text-gray-800 dark:text-white">Settings tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.
-              </p>
-            </TabItem>
-            <TabItem title="Contacts">
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              </ShowcaseSmallText>
+            </TabItem>            <TabItem title="Contacts">
+              <ShowcaseSmallText>
                 This is some placeholder content the <strong className="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.
-              </p>
+              </ShowcaseSmallText>
             </TabItem>
             <TabItem disabled title="Disabled">
               <p className="text-sm text-gray-500 dark:text-gray-400">This content should not be shown.</p>

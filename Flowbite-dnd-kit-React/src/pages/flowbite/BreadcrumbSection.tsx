@@ -6,21 +6,18 @@ export function BreadcrumbSection() {
   return (
     <ShowcaseCard>
       <ShowcaseHeading>Breadcrumb</ShowcaseHeading>
-      <div className="space-y-4">
-        <Breadcrumb aria-label="Default breadcrumb example">
+      <div className="space-y-4">        <Breadcrumb aria-label="Default breadcrumb example">
           <BreadcrumbItem href="#" icon={HiHome}>
             Home
           </BreadcrumbItem>
           <BreadcrumbItem href="#">Projects</BreadcrumbItem>
-          <BreadcrumbItem>Flowbite React</BreadcrumbItem>
-        </Breadcrumb>
-
-        <Breadcrumb aria-label="Solid background breadcrumb example" className="bg-gray-50 py-3 px-5">
+          <BreadcrumbItem>UI Library</BreadcrumbItem>
+        </Breadcrumb>        <Breadcrumb aria-label="Solid background breadcrumb example" className="bg-gray-50 py-3 px-5">
           <BreadcrumbItem href="#" icon={HiHome}>
             Home
           </BreadcrumbItem>
           <BreadcrumbItem href="#">Projects</BreadcrumbItem>
-          <BreadcrumbItem>Flowbite React</BreadcrumbItem>
+          <BreadcrumbItem>UI Library</BreadcrumbItem>
         </Breadcrumb>
       </div>
     </ShowcaseCard>

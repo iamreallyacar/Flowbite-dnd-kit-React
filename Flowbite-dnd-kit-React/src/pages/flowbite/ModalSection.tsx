@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'flowbite-react'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSubsection, ShowcaseSmallText } from "../../components"
 
 export function ModalSection() {
   const [openModal, setOpenModal] = useState(false)
@@ -9,10 +9,10 @@ export function ModalSection() {
 
   return (
     <ShowcaseCard>
-      <ShowcaseHeading>Modal</ShowcaseHeading>
-      <p className="text-gray-600 mb-6">
-        Interactive overlays for displaying content that requires user attention.
-      </p>
+      <ShowcaseHeading>Production Modals</ShowcaseHeading>
+      <ShowcaseText>
+        Interactive overlays for production order details, work confirmations, and critical actions.
+      </ShowcaseText>
       
       <div className="space-y-4">
         <div className="flex flex-wrap gap-4">
@@ -25,12 +25,12 @@ export function ModalSection() {
           <ModalHeader>Terms of Service</ModalHeader>
           <ModalBody>
             <div className="space-y-6">
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+              <ShowcaseText className="mb-4">
                 With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-              </p>
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+              </ShowcaseText>
+              <ShowcaseText className="mb-4">
                 The European Union's General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
-              </p>
+              </ShowcaseText>
             </div>
           </ModalBody>
           <ModalFooter>
@@ -45,9 +45,9 @@ export function ModalSection() {
           <ModalHeader />
           <ModalBody>
             <div className="text-center">
-              <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+              <ShowcaseSubsection className="mb-5 text-center">
                 Are you sure you want to delete this product?
-              </h3>
+              </ShowcaseSubsection>
               <div className="flex justify-center gap-4">
                 <Button color="failure" onClick={() => setOpenSmallModal(false)}>
                   Yes, I'm sure
@@ -58,23 +58,21 @@ export function ModalSection() {
               </div>
             </div>
           </ModalBody>
-        </Modal>
-
-        <Modal show={openLargeModal} size="7xl" onClose={() => setOpenLargeModal(false)}>
+        </Modal>        <Modal show={openLargeModal} size="7xl" onClose={() => setOpenLargeModal(false)}>
           <ModalHeader>Large modal</ModalHeader>
           <ModalBody>
             <div className="space-y-6">
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+              <ShowcaseText>
                 This is a large modal with more content space. It can be used for forms, detailed information, or any content that requires more room.
-              </p>
+              </ShowcaseText>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h4 className="font-semibold mb-2">Left Column</h4>
-                  <p className="text-sm text-gray-600">Content for the left side of the modal.</p>
+                  <ShowcaseSubsection>Left Column</ShowcaseSubsection>
+                  <ShowcaseSmallText>Content for the left side of the modal.</ShowcaseSmallText>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2">Right Column</h4>
-                  <p className="text-sm text-gray-600">Content for the right side of the modal.</p>
+                  <ShowcaseSubsection>Right Column</ShowcaseSubsection>
+                  <ShowcaseSmallText>Content for the right side of the modal.</ShowcaseSmallText>
                 </div>
               </div>
             </div>

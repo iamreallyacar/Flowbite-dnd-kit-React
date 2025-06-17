@@ -14,12 +14,12 @@ export function BannerSection() {
               <p className="flex items-center text-sm font-normal text-gray-500">
                 <MdAnnouncement className="mr-4 h-4 w-4" />
                 <span className="[&_p]:inline">
-                  New brand identity has been launched for the{' '}
+                  Pop-up banners for alerts maybe. We can add links to the issue at hand too. For demonstration, here is {' '}
                   <a
-                    href="https://flowbite.com"
+                    href="https://www.thermotune.com/"
                     className="decoration-1 decoration-solid underline underline-offset-2 hover:decoration-blue-700"
                   >
-                    Flowbite Library
+                    ThermoTune
                   </a>
                 </span>
               </p>
@@ -32,16 +32,15 @@ export function BannerSection() {
 
         <Banner>
           <div className="flex w-full flex-col justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:flex-row">
-            <div className="mb-3 mr-4 flex flex-col items-start md:mb-0 md:flex-row md:items-center">
-              <a
-                href="https://flowbite.com/"
+            <div className="mb-3 mr-4 flex flex-col items-start md:mb-0 md:flex-row md:items-center">              <a
+                href="#"
                 className="mb-2 flex items-center border-gray-200 md:mb-0 md:mr-4 md:border-r md:pr-4"
               >
-                <img src="https://flowbite.com/docs/images/logo.svg" className="mr-2 h-6" alt="Flowbite Logo" />
-                <span className="self-center whitespace-nowrap text-lg font-semibold text-gray-900">Flowbite</span>
+                <img src="https://via.placeholder.com/150x50?text=Logo" className="mr-2 h-6" alt="Company Logo" />
+                <span className="self-center whitespace-nowrap text-lg font-semibold text-gray-900">Company</span>
               </a>
               <p className="flex items-center text-sm font-normal text-gray-500">
-                Get started with a free and open-source component library for Tailwind CSS
+                Get started with a free and open-source component library for CSS framework
               </p>
             </div>
             <div className="flex shrink-0 items-center">

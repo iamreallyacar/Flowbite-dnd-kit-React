@@ -1,11 +1,14 @@
 import { ListGroup, ListGroupItem } from 'flowbite-react'
 import { HiUserCircle, HiOutlineUserCircle } from 'react-icons/hi'
-import { ShowcaseCard } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText } from "../../components"
 
 export function ListGroupSection() {
   return (
     <ShowcaseCard>
-      <h2 className="text-2xl font-semibold mb-6">List Group</h2>
+      <ShowcaseHeading>Production List Groups</ShowcaseHeading>
+      <ShowcaseText>
+        Organize production data, machine lists, and navigation items in structured list formats.
+      </ShowcaseText>
       <div className="space-y-4">
         <div className="max-w-md">
           <ListGroup>

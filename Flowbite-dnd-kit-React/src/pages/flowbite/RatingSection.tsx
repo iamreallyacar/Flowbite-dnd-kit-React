@@ -1,6 +1,6 @@
 import { Rating, RatingStar } from 'flowbite-react'
 import { useState } from 'react'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSubsection } from "../../components"
 
 export function RatingSection() {
   const [rating, setRating] = useState(4)
@@ -8,14 +8,14 @@ export function RatingSection() {
   return (
     <ShowcaseCard>
       <ShowcaseHeading>Rating</ShowcaseHeading>
-      <p className="text-gray-600 mb-6">
+      <ShowcaseText>
         Display user ratings and allow interactive rating input with customizable star components.
-      </p>
+      </ShowcaseText>
       
       <div className="space-y-8">
         {/* Default Rating */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Default Rating</h3>
+          <ShowcaseSubsection>Default Rating</ShowcaseSubsection>
           <div className="space-y-4">
             <Rating>
               <RatingStar />
@@ -25,11 +25,9 @@ export function RatingSection() {
               <RatingStar filled={false} />
             </Rating>
           </div>
-        </div>
-
-        {/* Rating with Text */}
+        </div>        {/* Rating with Text */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Rating with Text</h3>
+          <ShowcaseSubsection>Rating with Text</ShowcaseSubsection>
           <div className="space-y-4">
             <div className="flex items-center">
               <Rating>
@@ -68,7 +66,7 @@ export function RatingSection() {
 
         {/* Different Sizes */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Different Sizes</h3>
+          <ShowcaseSubsection>Different Sizes</ShowcaseSubsection>
           <div className="space-y-4">
             <div>
               <p className="text-sm text-gray-600 mb-2">Small</p>
@@ -107,7 +105,7 @@ export function RatingSection() {
 
         {/* Rating Scale */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Rating Scale</h3>
+          <ShowcaseSubsection>Rating Scale</ShowcaseSubsection>
           <div className="space-y-3">
             <div className="flex items-center">
               <span className="text-sm font-medium text-blue-600 dark:text-blue-500">5 star</span>
@@ -153,7 +151,7 @@ export function RatingSection() {
 
         {/* Interactive Rating */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Interactive Rating</h3>
+          <ShowcaseSubsection>Interactive Rating</ShowcaseSubsection>
           <div className="space-y-4">
             <p className="text-sm text-gray-600">Click on the stars to rate:</p>
             <div className="flex items-center space-x-1">
@@ -177,16 +175,16 @@ export function RatingSection() {
 
         {/* Advanced Rating Example */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Product Rating Example</h3>
+          <ShowcaseSubsection>Product Rating Example</ShowcaseSubsection>
           <div className="bg-gray-50 p-4 rounded-lg">
             <div className="flex items-start space-x-4">
               <img
                 className="w-16 h-16 rounded-lg object-cover"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+                src="https://via.placeholder.com/300x300?text=Product"
                 alt="Product"
               />
               <div className="flex-1">
-                <h4 className="font-semibold text-gray-900">Premium Headphones</h4>
+                <h4 className="font-semibold text-white">Premium Headphones</h4>
                 <div className="flex items-center mt-1">
                   <Rating>
                     <RatingStar />
@@ -201,7 +199,7 @@ export function RatingSection() {
                 <p className="text-sm text-gray-600 mt-1">
                   High-quality wireless headphones with excellent sound quality.
                 </p>
-                <p className="text-lg font-bold text-gray-900 mt-2">$199.99</p>
+                <p className="text-lg font-bold text-white mt-2">$199.99</p>
               </div>
             </div>
           </div>

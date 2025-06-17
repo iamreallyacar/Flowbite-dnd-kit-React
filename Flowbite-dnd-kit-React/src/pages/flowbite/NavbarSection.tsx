@@ -1,23 +1,22 @@
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle, Dropdown, DropdownDivider, DropdownHeader, DropdownItem, Avatar } from 'flowbite-react'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSectionHeader } from "../../components"
 
 export function NavbarSection() {
   return (
     <ShowcaseCard>
-      <ShowcaseHeading>Navbar</ShowcaseHeading>
-      <p className="text-gray-600 mb-6">
-        Responsive navigation headers with branding, navigation, and more.
-      </p>
+      <ShowcaseHeading>Production Navigation</ShowcaseHeading>
+      <ShowcaseText>
+        Responsive navigation headers for production management, machine monitoring, and user access.
+      </ShowcaseText>
       
       <div className="space-y-6">
         {/* Default Navbar */}
-        <div>
-          <h3 className="text-lg font-medium mb-3">Default Navbar</h3>
+        <div>          <ShowcaseSectionHeader>Default Navbar</ShowcaseSectionHeader>
           <Navbar fluid rounded>
-            <NavbarBrand href="https://flowbite-react.com">
-              <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+            <NavbarBrand href="#">
+              <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="UI Library Logo" />
               <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                Flowbite React
+                UI Library
               </span>
             </NavbarBrand>
             <NavbarToggle />
@@ -31,16 +30,13 @@ export function NavbarSection() {
               <NavbarLink href="#">Contact</NavbarLink>
             </NavbarCollapse>
           </Navbar>
-        </div>
-
-        {/* Navbar with Dropdown */}
-        <div>
-          <h3 className="text-lg font-medium mb-3">Navbar with Dropdown</h3>
+        </div>        {/* Navbar with Dropdown */}
+        <div>          <ShowcaseSectionHeader>Navbar with Dropdown</ShowcaseSectionHeader>
           <Navbar fluid rounded>
-            <NavbarBrand href="https://flowbite-react.com">
-              <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+            <NavbarBrand href="#">
+              <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="UI Library Logo" />
               <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                Flowbite React
+                UI Library
               </span>
             </NavbarBrand>
             <div className="flex md:order-2">
@@ -48,12 +44,11 @@ export function NavbarSection() {
                 arrowIcon={false}
                 inline
                 label={
-                  <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
+                  <Avatar alt="User settings" img="https://via.placeholder.com/40x40?text=User" rounded />
                 }
-              >
-                <DropdownHeader>
+              >                <DropdownHeader>
                   <span className="block text-sm">Bonnie Green</span>
-                  <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+                  <span className="block truncate text-sm font-medium">name@example.com</span>
                 </DropdownHeader>
                 <DropdownItem>Dashboard</DropdownItem>
                 <DropdownItem>Settings</DropdownItem>
@@ -76,13 +71,12 @@ export function NavbarSection() {
         </div>
 
         {/* CTA Navbar */}
-        <div>
-          <h3 className="text-lg font-medium mb-3">Navbar with CTA</h3>
+        <div>          <h3 className="text-lg font-medium mb-3">Navbar with CTA</h3>
           <Navbar fluid rounded>
-            <NavbarBrand href="https://flowbite-react.com">
-              <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+            <NavbarBrand href="#">
+              <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="UI Library Logo" />
               <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                Flowbite React
+                UI Library
               </span>
             </NavbarBrand>
             <div className="flex md:order-2">

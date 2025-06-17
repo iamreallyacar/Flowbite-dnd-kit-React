@@ -1,11 +1,14 @@
 import { Dropdown, DropdownItem, DropdownDivider } from 'flowbite-react'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText } from "../../components"
 
 export function DropdownSection() {
   return (
     <ShowcaseCard>
-      <ShowcaseHeading>Dropdown</ShowcaseHeading>
-      <div className="flex flex-wrap gap-4">        <Dropdown label="Dropdown button">
+      <ShowcaseHeading>Production Action Menus</ShowcaseHeading>
+      <ShowcaseText>
+        Quick access menus for production management, machine controls, and user settings.
+      </ShowcaseText>
+      <div className="flex flex-wrap gap-4"><Dropdown label="Dropdown button">
           <DropdownItem>Dashboard</DropdownItem>
           <DropdownItem>Settings</DropdownItem>
           <DropdownItem>Earnings</DropdownItem>

@@ -1,5 +1,5 @@
 import { Tooltip, Button } from 'flowbite-react'
-import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSubsection } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSectionHeader } from "../../components"
 
 export function TooltipSection() {
   return (
@@ -11,17 +11,15 @@ export function TooltipSection() {
       
       <div className="space-y-8">        {/* Default Tooltip */}
         <div>
-          <ShowcaseSubsection>Default Tooltip</ShowcaseSubsection>
+          <ShowcaseSectionHeader>Default Tooltip</ShowcaseSectionHeader>
           <div className="flex flex-wrap gap-4">
             <Tooltip content="Tooltip content">
               <Button>Default tooltip</Button>
             </Tooltip>
           </div>
-        </div>
-
-        {/* Tooltip Placement */}
+        </div>        {/* Tooltip Placement */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Tooltip Placement</h3>
+          <ShowcaseSectionHeader>Tooltip Placement</ShowcaseSectionHeader>
           <div className="flex flex-wrap gap-4">
             <Tooltip content="Tooltip on top" placement="top">
               <Button>Tooltip top</Button>
@@ -39,11 +37,9 @@ export function TooltipSection() {
               <Button>Tooltip left</Button>
             </Tooltip>
           </div>
-        </div>
-
-        {/* Tooltip Styles */}
+        </div>        {/* Tooltip Styles */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Tooltip Styles</h3>
+          <ShowcaseSectionHeader>Tooltip Styles</ShowcaseSectionHeader>
           <div className="flex flex-wrap gap-4">
             <Tooltip content="Light tooltip" style="light">
               <Button>Light</Button>
@@ -57,11 +53,9 @@ export function TooltipSection() {
               <Button>Auto</Button>
             </Tooltip>
           </div>
-        </div>
-
-        {/* Tooltip with Custom Content */}
+        </div>        {/* Tooltip with Custom Content */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Custom Content Tooltip</h3>
+          <ShowcaseSectionHeader>Custom Content Tooltip</ShowcaseSectionHeader>
           <div className="flex flex-wrap gap-4">
             <Tooltip
               content={
@@ -82,11 +76,9 @@ export function TooltipSection() {
               <Button>Custom tooltip</Button>
             </Tooltip>
           </div>
-        </div>
-
-        {/* Tooltips on Different Elements */}
+        </div>        {/* Tooltips on Different Elements */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Tooltips on Different Elements</h3>
+          <ShowcaseSectionHeader>Tooltips on Different Elements</ShowcaseSectionHeader>
           <div className="space-y-4">
             <div className="flex flex-wrap gap-4 items-center">
               <Tooltip content="Tooltip on text">
@@ -102,17 +94,15 @@ export function TooltipSection() {
               <Tooltip content="Tooltip on image">
                 <img
                   className="w-10 h-10 rounded cursor-help"
-                  src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
+                  src="https://via.placeholder.com/40x40?text=Profile"
                   alt="Profile"
                 />
               </Tooltip>
             </div>
           </div>
-        </div>
-
-        {/* Tooltip Triggers */}
+        </div>        {/* Tooltip Triggers */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Tooltip Triggers</h3>
+          <ShowcaseSectionHeader>Tooltip Triggers</ShowcaseSectionHeader>
           <div className="flex flex-wrap gap-4">
             <Tooltip content="Hover to see tooltip" trigger="hover">
               <Button>Hover trigger</Button>

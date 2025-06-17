@@ -1,18 +1,18 @@
 import { FloatingLabel } from 'flowbite-react'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSectionHeader } from "../../components"
 
 export function FloatingLabelSection() {
   return (
     <ShowcaseCard>
-      <ShowcaseHeading>Floating Label</ShowcaseHeading>
-      <p className="text-gray-600 mb-6">
-        Input fields with floating labels that animate when the user focuses or enters content.
-      </p>
+      <ShowcaseHeading>Production Form Labels</ShowcaseHeading>
+      <ShowcaseText>
+        Input fields with floating labels for production order forms, machine data entry, and system configuration.
+      </ShowcaseText>
       
       <div className="space-y-8">
         {/* Default Floating Label */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Default Floating Label</h3>
+          <ShowcaseSectionHeader>Default Floating Label</ShowcaseSectionHeader>
           <div className="grid gap-6 md:grid-cols-2">
             <FloatingLabel variant="filled" label="Email" />
             <FloatingLabel variant="filled" label="Password" type="password" />
@@ -21,7 +21,7 @@ export function FloatingLabelSection() {
 
         {/* Outlined Floating Label */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Outlined Floating Label</h3>
+          <ShowcaseSectionHeader>Outlined Floating Label</ShowcaseSectionHeader>
           <div className="grid gap-6 md:grid-cols-2">
             <FloatingLabel variant="outlined" label="Email" />
             <FloatingLabel variant="outlined" label="Password" type="password" />

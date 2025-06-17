@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Toast, ToastToggle } from 'flowbite-react'
 import { HiCheck, HiExclamation, HiFire, HiX } from 'react-icons/hi'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSectionHeader } from "../../components"
 
 export function ToastSection() {
   const [showToast1, setShowToast1] = useState(true)
@@ -11,15 +11,15 @@ export function ToastSection() {
 
   return (
     <ShowcaseCard>
-      <ShowcaseHeading>Toast</ShowcaseHeading>
-      <p className="text-gray-600 mb-6">
-        Show non-intrusive notifications to users with customizable toast messages.
-      </p>
+      <ShowcaseHeading>Production Notifications</ShowcaseHeading>
+      <ShowcaseText>
+        Show non-intrusive notifications for job completions, machine alerts, and system status updates.
+      </ShowcaseText>
       
       <div className="space-y-8">
         {/* Default Toast */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Default Toast</h3>
+          <ShowcaseSectionHeader>Default Toast</ShowcaseSectionHeader>
           <div className="space-y-4">
             {showToast1 && (
               <Toast>
@@ -37,11 +37,9 @@ export function ToastSection() {
               Show Default Toast
             </button>
           </div>
-        </div>
-
-        {/* Interactive Toast */}
+        </div>        {/* Interactive Toast */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Interactive Toast</h3>
+          <ShowcaseSectionHeader>Interactive Toast</ShowcaseSectionHeader>
           <div className="space-y-4">
             {showToast2 && (
               <Toast>
@@ -65,11 +63,9 @@ export function ToastSection() {
               Show Interactive Toast
             </button>
           </div>
-        </div>
-
-        {/* Warning Toast */}
+        </div>        {/* Warning Toast */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Warning Toast</h3>
+          <ShowcaseSectionHeader>Warning Toast</ShowcaseSectionHeader>
           <div className="space-y-4">
             {showToast3 && (
               <Toast>
@@ -87,11 +83,9 @@ export function ToastSection() {
               Show Warning Toast
             </button>
           </div>
-        </div>
-
-        {/* Error Toast */}
+        </div>        {/* Error Toast */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Error Toast</h3>
+          <ShowcaseSectionHeader>Error Toast</ShowcaseSectionHeader>
           <div className="space-y-4">
             {showToast4 && (
               <Toast>
@@ -113,7 +107,7 @@ export function ToastSection() {
 
         {/* Simple Toast Examples */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Simple Toast Notifications</h3>
+          <ShowcaseSectionHeader>Simple Toast Notifications</ShowcaseSectionHeader>
           <div className="space-y-2">
             <Toast>
               <HiCheck className="h-5 w-5 text-green-600" />

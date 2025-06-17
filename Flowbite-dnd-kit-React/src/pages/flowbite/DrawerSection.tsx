@@ -37,7 +37,7 @@ export function DrawerSection() {
             <a href="#" className="text-cyan-600 underline dark:text-cyan-500 hover:no-underline">
               limited-time sale
             </a>{' '}
-            for Flowbite Docs + Job Board. Unlimited access to over 190 components and interactive elements.
+            for Documentation + Job Board. Unlimited access to over 190 components and interactive elements.
           </p>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <a href="#" className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">

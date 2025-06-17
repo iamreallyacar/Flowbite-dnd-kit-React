@@ -1,10 +1,13 @@
 import { Button } from 'flowbite-react'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText } from "../../components"
 
 export function ButtonsSection() {
   return (
     <ShowcaseCard>
-      <ShowcaseHeading>Buttons</ShowcaseHeading>
+      <ShowcaseHeading>Production Action Buttons</ShowcaseHeading>
+      <ShowcaseText>
+        Interactive buttons for starting jobs, confirming orders, and managing production workflows.
+      </ShowcaseText>
       <div className="flex flex-wrap gap-4">
         <Button>Default</Button>
         <Button color="blue">Blue</Button>

@@ -1,16 +1,19 @@
 import { Button, Label, TextInput, Textarea, Select, Checkbox, Radio } from 'flowbite-react'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseLinkText, ShowcaseSubsection } from "../../components"
 
 export function FormsSection() {
   return (
     <ShowcaseCard>
-      <ShowcaseHeading>Forms</ShowcaseHeading>
+      <ShowcaseHeading>Production Forms</ShowcaseHeading>
+      <ShowcaseText>
+        Create work orders, update job status, and manage production data with form components.
+      </ShowcaseText>
       <div className="max-w-md space-y-4">
         <div>
           <div className="mb-2 block">
             <Label htmlFor="email1">Your email</Label>
           </div>
-          <TextInput id="email1" type="email" placeholder="name@flowbite.com" required />
+          <TextInput id="email1" type="email" placeholder="name@example.com" required />
         </div>
         <div>
           <div className="mb-2 block">
@@ -39,13 +42,13 @@ export function FormsSection() {
           <Checkbox id="agree" />
           <Label htmlFor="agree" className="flex">
             I agree with the&nbsp;
-            <a href="#" className="text-cyan-600 hover:underline">
+            <ShowcaseLinkText href="#">
               terms and conditions
-            </a>
+            </ShowcaseLinkText>
           </Label>
         </div>
         <fieldset className="flex max-w-md flex-col gap-4">
-          <legend className="mb-4">Choose your favorite country</legend>
+          <ShowcaseSubsection>Choose your favorite country</ShowcaseSubsection>
           <div className="flex items-center gap-2">
             <Radio id="united-state" name="countries" value="USA" defaultChecked />
             <Label htmlFor="united-state">United States</Label>

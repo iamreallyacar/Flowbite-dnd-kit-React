@@ -5,7 +5,7 @@ import { ShowcaseCard, ShowcaseHeading } from "../../components"
 
 export function ClipboardSection() {
   const [copied, setCopied] = useState(false)
-  const textToCopy = "npm install flowbite-react"
+  const textToCopy = "npm install ui-component-library"
 
   const handleCopy = () => {
     navigator.clipboard.writeText(textToCopy)

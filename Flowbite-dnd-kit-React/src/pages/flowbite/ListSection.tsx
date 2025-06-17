@@ -1,23 +1,21 @@
 import { List, ListItem } from 'flowbite-react'
 import { FaCheck, FaStar, FaArrowRight, FaShoppingCart, FaUser, FaHome } from 'react-icons/fa'
-import { ShowcaseCard } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSubheading, ShowcaseSubsection } from "../../components"
 
 export function ListSection() {
   return (
     <ShowcaseCard>
-      <div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">List Components</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">
-          Display series of related content in a structured list format with various styles and customization options.
-        </p>
-      </div>
+      <ShowcaseHeading>List Components</ShowcaseHeading>
+      <ShowcaseText>
+        Display series of related content in a structured list format with various styles and customization options.
+      </ShowcaseText>
 
       {/* Unordered Lists */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Unordered Lists</h3>
+        <ShowcaseSubheading>Unordered Lists</ShowcaseSubheading>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Default List</h4>
+            <ShowcaseSubsection>Default List</ShowcaseSubsection>
             <List>
               <ListItem>At least 10 characters (and up to 100 characters)</ListItem>
               <ListItem>At least one lowercase character</ListItem>
@@ -25,9 +23,8 @@ export function ListSection() {
               <ListItem>Inclusion of at least one number or symbol</ListItem>
             </List>
           </div>
-          
-          <div>
-            <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-2">With Icons</h4>
+            <div>
+            <ShowcaseSubsection>With Icons</ShowcaseSubsection>
             <List>
               <ListItem icon={FaCheck}>At least 10 characters (and up to 100 characters)</ListItem>
               <ListItem icon={FaCheck}>At least one lowercase character</ListItem>
@@ -36,14 +33,11 @@ export function ListSection() {
             </List>
           </div>
         </div>
-      </div>
-
-      {/* Ordered Lists */}
+      </div>      {/* Ordered Lists */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Ordered Lists</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Default Ordered</h4>
+        <ShowcaseSubheading>Ordered Lists</ShowcaseSubheading>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">          <div>
+            <ShowcaseSubsection>Default Ordered</ShowcaseSubsection>
             <List ordered>
               <ListItem>Open the file or visit the URL in your web browser</ListItem>
               <ListItem>Review the security settings and permissions</ListItem>
@@ -51,9 +45,8 @@ export function ListSection() {
               <ListItem>Install the required dependencies</ListItem>
             </List>
           </div>
-          
-          <div>
-            <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Nested Lists</h4>
+            <div>
+            <ShowcaseSubsection>Nested Lists</ShowcaseSubsection>
             <List ordered>
               <ListItem>
                 Open the file that contains your function
@@ -121,7 +114,7 @@ export function ListSection() {
             <div className="space-y-3">
               <div>
                 <dt className="font-semibold text-gray-900 dark:text-white">Name:</dt>
-                <dd className="text-gray-600 dark:text-gray-400">Flowbite</dd>
+                <dd className="text-gray-600 dark:text-gray-400">Company</dd>
               </div>
               <div>
                 <dt className="font-semibold text-gray-900 dark:text-white">Category:</dt>
@@ -129,7 +122,7 @@ export function ListSection() {
               </div>
               <div>
                 <dt className="font-semibold text-gray-900 dark:text-white">Technology:</dt>
-                <dd className="text-gray-600 dark:text-gray-400">React, TypeScript, Tailwind CSS</dd>
+                <dd className="text-gray-600 dark:text-gray-400">React, TypeScript, CSS Framework</dd>
               </div>
             </div>
           </div>

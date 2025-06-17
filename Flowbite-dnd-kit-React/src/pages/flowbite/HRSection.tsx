@@ -1,28 +1,28 @@
 import { HR, HRTrimmed } from 'flowbite-react'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSectionHeader } from "../../components"
 
 export function HRSection() {
   return (
     <ShowcaseCard>
-      <ShowcaseHeading>Horizontal Rule (HR)</ShowcaseHeading>
-      <p className="text-gray-600 mb-6">
-        Create visual separation between content sections with horizontal divider lines.
-      </p>
+      <ShowcaseHeading>Production Section Dividers</ShowcaseHeading>
+      <ShowcaseText>
+        Create visual separation between production data sections, machine statuses, and content areas.
+      </ShowcaseText>
       
       <div className="space-y-8">
         {/* Default HR */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Default Horizontal Rule</h3>
+          <ShowcaseSectionHeader>Default Horizontal Rule</ShowcaseSectionHeader>
           <div className="space-y-4">
-            <p className="text-gray-600">Content above the divider line.</p>
+            <ShowcaseText>Content above the divider line.</ShowcaseText>
             <HR />
-            <p className="text-gray-600">Content below the divider line.</p>
+            <ShowcaseText>Content below the divider line.</ShowcaseText>
           </div>
         </div>
 
         {/* HR with Text */}
         <div>
-          <h3 className="text-lg font-medium mb-4">HR with Text</h3>
+          <ShowcaseSectionHeader>HR with Text</ShowcaseSectionHeader>
           <div className="space-y-4">
             <p className="text-gray-600">This is some content above the divider.</p>
             <div className="flex items-center">

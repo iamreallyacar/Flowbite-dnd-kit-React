@@ -18,18 +18,16 @@ export function CardsSection() {
         <Card className="max-w-sm">
           <ShowcaseSubheading>
             Another Card
-          </ShowcaseSubheading>
-          <ShowcaseText>
-            This card shows how Flowbite React components work seamlessly with Tailwind CSS.
+          </ShowcaseSubheading>          <ShowcaseText>
+            This card shows how UI library components work seamlessly with CSS framework.
           </ShowcaseText>
         </Card>
 
         <Card className="max-w-sm">
           <ShowcaseSubheading>
             Third Card
-          </ShowcaseSubheading>
-          <ShowcaseText>
-            Beautiful, responsive card layouts are easy with Flowbite React.
+          </ShowcaseSubheading>          <ShowcaseText>
+            Beautiful, responsive card layouts are easy with UI component library.
           </ShowcaseText>
         </Card>
       </div>

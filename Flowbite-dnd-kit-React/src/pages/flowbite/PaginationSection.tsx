@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Pagination } from 'flowbite-react'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSubsection } from "../../components"
 
 export function PaginationSection() {
   const [currentPage, setCurrentPage] = useState(1)
@@ -12,25 +12,22 @@ export function PaginationSection() {
   return (
     <ShowcaseCard>
       <ShowcaseHeading>Pagination</ShowcaseHeading>
-      <p className="text-gray-600 mb-6">
+      <ShowcaseText>
         Navigate through multiple pages of content with pagination controls.
-      </p>
+      </ShowcaseText>
       
       <div className="space-y-8">
         {/* Default Pagination */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Default Pagination</h3>
+          <ShowcaseSubsection>Default Pagination</ShowcaseSubsection>
           <div className="flex overflow-x-auto sm:justify-center">
             <Pagination currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />
-          </div>
-          <p className="text-sm text-gray-500 mt-2 text-center">
+          </div>          <p className="text-sm text-gray-300 mt-2 text-center">
             Current page: {currentPage}
           </p>
-        </div>
-
-        {/* Pagination with Icons */}
+        </div>        {/* Pagination with Icons */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Pagination with Icons</h3>
+          <ShowcaseSubsection>Pagination with Icons</ShowcaseSubsection>
           <div className="flex overflow-x-auto sm:justify-center">
             <Pagination 
               currentPage={currentPage2} 
@@ -44,9 +41,8 @@ export function PaginationSection() {
           </p>
         </div>
 
-        {/* Large Pagination */}
-        <div>
-          <h3 className="text-lg font-medium mb-4">Large Size Pagination</h3>
+        {/* Large Pagination */}        <div>
+          <ShowcaseSubsection>Large Size Pagination</ShowcaseSubsection>
           <div className="flex overflow-x-auto sm:justify-center">
             <Pagination 
               currentPage={5} 
@@ -60,7 +56,7 @@ export function PaginationSection() {
 
         {/* Compact Pagination */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Compact Pagination</h3>
+          <ShowcaseSubsection>Compact Pagination</ShowcaseSubsection>
           <div className="flex overflow-x-auto sm:justify-center">
             <div className="flex items-center space-x-1">
               <button className="px-3 py-2 text-sm leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700">
@@ -90,12 +86,11 @@ export function PaginationSection() {
 
         {/* Pagination with Text */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Pagination with Text</h3>
+          <ShowcaseSubsection>Pagination with Text</ShowcaseSubsection>
           <div className="flex flex-col items-center">
-            <span className="text-sm text-gray-700 dark:text-gray-400 mb-4">
-              Showing <span className="font-semibold text-gray-900 dark:text-white">1</span> to{' '}
-              <span className="font-semibold text-gray-900 dark:text-white">10</span> of{' '}
-              <span className="font-semibold text-gray-900 dark:text-white">100</span> Entries
+            <span className="text-sm text-gray-700 dark:text-gray-400 mb-4">              Showing <span className="font-semibold text-white">1</span> to{' '}
+              <span className="font-semibold text-white">10</span> of{' '}
+              <span className="font-semibold text-white">100</span> Entries
             </span>
             <Pagination currentPage={1} totalPages={10} onPageChange={() => {}} showIcons />
           </div>

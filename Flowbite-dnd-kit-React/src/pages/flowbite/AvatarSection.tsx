@@ -1,38 +1,36 @@
 import { Avatar } from 'flowbite-react'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseSmallText } from "../../components"
 
 export function AvatarSection() {
   return (
     <ShowcaseCard>
       <ShowcaseHeading>Avatar</ShowcaseHeading>
-      <div className="flex flex-wrap gap-6 items-center">
-        <div className="flex flex-col items-center gap-2">
-          <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" />
-          <span className="text-sm text-gray-600">Default</span>
+      <div className="flex flex-wrap gap-6 items-center">        <div className="flex flex-col items-center gap-2">
+          <Avatar img="https://via.placeholder.com/40x40?text=User" />
+          <ShowcaseSmallText className="mb-0">Default</ShowcaseSmallText>
         </div>
         <div className="flex flex-col items-center gap-2">
-          <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" size="lg" />
-          <span className="text-sm text-gray-600">Large</span>
+          <Avatar img="https://via.placeholder.com/40x40?text=User" size="lg" />
+          <ShowcaseSmallText className="mb-0">Large</ShowcaseSmallText>
         </div>
         <div className="flex flex-col items-center gap-2">
-          <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
-          <span className="text-sm text-gray-600">Rounded</span>
+          <Avatar img="https://via.placeholder.com/40x40?text=User" rounded />
+          <ShowcaseSmallText className="mb-0">Rounded</ShowcaseSmallText>
+        </div>        <div className="flex flex-col items-center gap-2">
+          <Avatar img="https://via.placeholder.com/40x40?text=User" bordered />
+          <ShowcaseSmallText className="mb-0">Bordered</ShowcaseSmallText>
         </div>
         <div className="flex flex-col items-center gap-2">
-          <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" bordered />
-          <span className="text-sm text-gray-600">Bordered</span>
+          <Avatar img="https://via.placeholder.com/40x40?text=User" status="online" />
+          <ShowcaseSmallText className="mb-0">Online</ShowcaseSmallText>
         </div>
         <div className="flex flex-col items-center gap-2">
-          <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" status="online" />
-          <span className="text-sm text-gray-600">Online</span>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" status="busy" />
-          <span className="text-sm text-gray-600">Busy</span>
+          <Avatar img="https://via.placeholder.com/40x40?text=User" status="busy" />
+          <ShowcaseSmallText className="mb-0">Busy</ShowcaseSmallText>
         </div>
         <div className="flex flex-col items-center gap-2">
           <Avatar placeholderInitials="RR" />
-          <span className="text-sm text-gray-600">Initials</span>
+          <ShowcaseSmallText className="mb-0">Initials</ShowcaseSmallText>
         </div>
       </div>
     </ShowcaseCard>

@@ -9,20 +9,18 @@ export function FooterSection() {
       <Footer container>
         <div className="w-full">
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-            <div>
-              <FooterBrand
-                href="https://flowbite.com"
-                src="https://flowbite.com/docs/images/logo.svg"
-                alt="Flowbite Logo"
-                name="Flowbite"
+            <div>              <FooterBrand
+                href="#"
+                src="https://via.placeholder.com/150x50?text=Logo"
+                alt="Company Logo"
+                name="Company"
               />
             </div>
             <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
               <div>
-                <FooterTitle title="about" />
-                <FooterLinkGroup col>
-                  <FooterLink href="#">Flowbite</FooterLink>
-                  <FooterLink href="#">Tailwind CSS</FooterLink>
+                <FooterTitle title="about" />                <FooterLinkGroup col>
+                  <FooterLink href="#">Company</FooterLink>
+                  <FooterLink href="#">CSS Framework</FooterLink>
                 </FooterLinkGroup>
               </div>
               <div>
@@ -42,7 +40,7 @@ export function FooterSection() {
           </div>
           <FooterDivider />
           <div className="w-full sm:flex sm:items-center sm:justify-between">
-            <FooterCopyright href="#" by="Flowbite™" year={2022} />
+            <FooterCopyright href="#" by="Company™" year={2022} />
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
               <FooterIcon href="#" icon={BsFacebook} />
               <FooterIcon href="#" icon={BsInstagram} />

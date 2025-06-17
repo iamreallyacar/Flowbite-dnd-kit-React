@@ -1,29 +1,29 @@
 import { Blockquote } from 'flowbite-react'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSubheading } from "../../components"
 
 export function BlockquoteSection() {
   return (
     <ShowcaseCard>
       <ShowcaseHeading>Blockquote</ShowcaseHeading>
-      <p className="text-gray-600 mb-6">
+      <ShowcaseText>
         Display quoted text content with proper typography and styling for testimonials and citations.
-      </p>
+      </ShowcaseText>
       
       <div className="space-y-8">
         {/* Default Blockquote */}
         <div>
           <ShowcaseSubheading>Default Blockquote</ShowcaseSubheading>
           <Blockquote>
-            "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to complex dashboard. Perfect choice for your next SaaS application."
+            Not sure what practical uses we can find for this. I guess it's an extra text option.
           </Blockquote>
         </div>
 
         {/* Solid Background Blockquote */}
         <div>
           <ShowcaseSubheading>Solid Background</ShowcaseSubheading>
-          <div className="p-4 bg-gray-50 rounded-lg">
+          <div className="p-4 bg-gray-900 rounded-lg">
             <Blockquote className="text-xl italic font-semibold text-gray-900 dark:text-white">
-              <p>"Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to complex dashboard. Perfect choice for your next SaaS application."</p>
+              <p>"Maybe we can use these in the user manual for summaries?"</p>
             </Blockquote>
           </div>
         </div>
@@ -39,11 +39,11 @@ export function BlockquoteSection() {
             </div>
             <Blockquote>
               <p className="text-xl italic font-medium leading-relaxed text-gray-900 dark:text-white">
-                "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to complex dashboard. Perfect choice for your next SaaS application."
+                "This one is straight up used for marketing."
               </p>
             </Blockquote>
             <figcaption className="flex items-center mt-6 space-x-3">
-              <img className="w-6 h-6 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png" alt="profile picture" />
+              <img className="w-6 h-6 rounded-full" src="https://via.placeholder.com/40x40?text=Profile" alt="profile picture" />
               <div className="flex items-center divide-x-2 divide-gray-300 dark:divide-gray-700">
                 <cite className="pr-3 font-medium text-gray-900 dark:text-white">Michael Gough</cite>
                 <cite className="pl-3 text-sm text-gray-500 dark:text-gray-400">CEO at Google</cite>
@@ -57,7 +57,7 @@ export function BlockquoteSection() {
           <ShowcaseSubheading>User Testimonial</ShowcaseSubheading>
           <div className="p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
             <div className="flex items-center mb-4">
-              <img className="w-10 h-10 me-4 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png" alt="" />
+              <img className="w-10 h-10 me-4 rounded-full" src="https://via.placeholder.com/40x40?text=Profile" alt="" />
               <div className="font-medium dark:text-white">
                 <p>Jese Leos <time dateTime="2014-08-16 19:00" className="block text-sm text-gray-500 dark:text-gray-400">Joined on August 2014</time></p>
               </div>
@@ -129,5 +129,3 @@ export function BlockquoteSection() {
     </ShowcaseCard>
   )
 }
-import { ShowcaseSubheading } from '../../components'
-

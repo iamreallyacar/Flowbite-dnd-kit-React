@@ -1,78 +1,77 @@
 import { Spinner } from 'flowbite-react'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSectionHeader, ShowcaseSmallText, ShowcaseCaptionText } from "../../components"
 
 export function SpinnerSection() {
   return (
     <ShowcaseCard>
-      <ShowcaseHeading>Spinner</ShowcaseHeading>
-      <p className="text-gray-600 mb-6">
-        Loading indicators to show users that content is being processed or loaded.
-      </p>
+      <ShowcaseHeading>Production Loading States</ShowcaseHeading>
+      <ShowcaseText>
+        Loading indicators to show users that production data, job updates, or machine status is being processed.
+      </ShowcaseText>
       
       <div className="space-y-8">
         {/* Default Spinner */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Default Spinner</h3>
+          <ShowcaseSectionHeader>Default Spinner</ShowcaseSectionHeader>
           <div className="flex items-center space-x-4">
             <Spinner aria-label="Default spinner example" />
-            <span className="text-sm text-gray-600">Loading...</span>
+            <ShowcaseSmallText className="mb-0">Loading...</ShowcaseSmallText>
           </div>
         </div>
 
         {/* Different Colors */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Different Colors</h3>
+          <ShowcaseSectionHeader>Different Colors</ShowcaseSectionHeader>
           <div className="flex items-center space-x-4 flex-wrap gap-4">
             <div className="flex flex-col items-center space-y-2">
               <Spinner color="info" aria-label="Info spinner example" />
-              <span className="text-xs text-gray-500">Info</span>
+              <ShowcaseCaptionText>Info</ShowcaseCaptionText>
             </div>
-            <div className="flex flex-col items-center space-y-2">
-              <Spinner color="success" aria-label="Success spinner example" />
-              <span className="text-xs text-gray-500">Success</span>
+            <div className="flex flex-col items-center space-y-2">              <Spinner color="success" aria-label="Success spinner example" />
+              <ShowcaseCaptionText>Success</ShowcaseCaptionText>
             </div>
             <div className="flex flex-col items-center space-y-2">
               <Spinner color="failure" aria-label="Failure spinner example" />
-              <span className="text-xs text-gray-500">Failure</span>
+              <ShowcaseCaptionText>Failure</ShowcaseCaptionText>
             </div>
             <div className="flex flex-col items-center space-y-2">
               <Spinner color="warning" aria-label="Warning spinner example" />
-              <span className="text-xs text-gray-500">Warning</span>
+              <ShowcaseCaptionText>Warning</ShowcaseCaptionText>
             </div>
             <div className="flex flex-col items-center space-y-2">
               <Spinner color="pink" aria-label="Pink spinner example" />
-              <span className="text-xs text-gray-500">Pink</span>
+              <ShowcaseCaptionText>Pink</ShowcaseCaptionText>
             </div>
             <div className="flex flex-col items-center space-y-2">
               <Spinner color="purple" aria-label="Purple spinner example" />
-              <span className="text-xs text-gray-500">Purple</span>
+              <ShowcaseCaptionText>Purple</ShowcaseCaptionText>
             </div>
           </div>
         </div>
 
         {/* Different Sizes */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Different Sizes</h3>
+          <ShowcaseSectionHeader>Different Sizes</ShowcaseSectionHeader>
           <div className="flex items-center space-x-4 flex-wrap gap-6">
             <div className="flex flex-col items-center space-y-2">
               <Spinner size="xs" aria-label="Extra small spinner example" />
-              <span className="text-xs text-gray-500">Extra Small</span>
+              <ShowcaseCaptionText>Extra Small</ShowcaseCaptionText>
             </div>
             <div className="flex flex-col items-center space-y-2">
               <Spinner size="sm" aria-label="Small spinner example" />
-              <span className="text-xs text-gray-500">Small</span>
+              <ShowcaseCaptionText>Small</ShowcaseCaptionText>
             </div>
             <div className="flex flex-col items-center space-y-2">
               <Spinner size="md" aria-label="Medium spinner example" />
-              <span className="text-xs text-gray-500">Medium</span>
+              <ShowcaseCaptionText>Medium</ShowcaseCaptionText>
             </div>
             <div className="flex flex-col items-center space-y-2">
               <Spinner size="lg" aria-label="Large spinner example" />
-              <span className="text-xs text-gray-500">Large</span>
+              <ShowcaseCaptionText>Large</ShowcaseCaptionText>
             </div>
             <div className="flex flex-col items-center space-y-2">
               <Spinner size="xl" aria-label="Extra large spinner example" />
-              <span className="text-xs text-gray-500">Extra Large</span>
+              <ShowcaseCaptionText>Extra Large</ShowcaseCaptionText>
             </div>
           </div>
         </div>

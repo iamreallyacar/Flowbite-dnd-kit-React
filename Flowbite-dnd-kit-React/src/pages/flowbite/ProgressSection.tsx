@@ -1,79 +1,100 @@
 import { Progress } from 'flowbite-react'
-import { ShowcaseCard, ShowcaseHeading } from "../../components"
+import { ShowcaseCard, ShowcaseHeading, ShowcaseText, ShowcaseSectionHeader, ShowcaseCaptionText } from "../../components"
 
 export function ProgressSection() {
   return (
     <ShowcaseCard>
-      <ShowcaseHeading>Progress Bar</ShowcaseHeading>
-      <p className="text-gray-600 mb-6">
-        Show the completion progress of tasks or processes with customizable progress bars.
-      </p>
+      <ShowcaseHeading>Production Progress Tracking</ShowcaseHeading>
+      <ShowcaseText>
+        Monitor job completion, machine utilization, and production targets with real-time progress indicators.
+      </ShowcaseText>
       
       <div className="space-y-8">
-        {/* Default Progress */}
+        {/* Job Progress */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Default Progress</h3>
+          <ShowcaseSectionHeader>Active Job Progress</ShowcaseSectionHeader>
           <div className="space-y-4">
             <div>
-              <Progress progress={45} />
-              <p className="text-sm text-gray-500 mt-1">45% Complete</p>
+              <div className="flex justify-between text-sm mb-1">
+                <span>Order #PO-2024-158 - Widget Assembly</span>
+                <span>850 / 1000 units</span>
+              </div>              <Progress progress={85} color="green" />
+              <ShowcaseCaptionText className="mt-1">85% Complete - On Schedule</ShowcaseCaptionText>
             </div>
             <div>
-              <Progress progress={50} />
-              <p className="text-sm text-gray-500 mt-1">50% Complete</p>
+              <div className="flex justify-between text-sm mb-1">
+                <span>Order #PO-2024-159 - Gear Production</span>
+                <span>300 / 500 units</span>
+              </div>
+              <Progress progress={60} color="blue" />
+              <ShowcaseCaptionText className="mt-1">60% Complete - 2 hours remaining</ShowcaseCaptionText>
             </div>
             <div>
-              <Progress progress={75} />
-              <p className="text-sm text-gray-500 mt-1">75% Complete</p>
+              <div className="flex justify-between text-sm mb-1">
+                <span>Order #PO-2024-160 - Motor Assembly</span>
+                <span>120 / 800 units</span>
+              </div>
+              <Progress progress={15} color="yellow" />
+              <ShowcaseCaptionText className="mt-1">15% Complete - Behind Schedule</ShowcaseCaptionText>
             </div>
           </div>
-        </div>
-
-        {/* Progress with Labels */}
+        </div>        {/* Machine Utilization */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Progress with Labels</h3>
+          <ShowcaseSectionHeader>Machine Utilization</ShowcaseSectionHeader>
           <div className="space-y-4">
             <div>
               <div className="flex justify-between mb-1">
-                <span className="text-base font-medium text-blue-700 dark:text-white">Flowbite</span>
-                <span className="text-sm font-medium text-blue-700 dark:text-white">45%</span>
+                <span className="text-base font-medium text-green-700 dark:text-white">CNC Machine A-101</span>
+                <span className="text-sm font-medium text-green-700 dark:text-white">92%</span>
               </div>
-              <Progress progress={45} />
+              <Progress progress={92} color="green" />
             </div>
             <div>
               <div className="flex justify-between mb-1">
-                <span className="text-base font-medium text-purple-700 dark:text-white">React</span>
-                <span className="text-sm font-medium text-purple-700 dark:text-white">50%</span>
+                <span className="text-base font-medium text-blue-700 dark:text-white">Assembly Line B-205</span>
+                <span className="text-sm font-medium text-blue-700 dark:text-white">78%</span>
               </div>
-              <Progress progress={50} color="purple" />
+              <Progress progress={78} color="blue" />
             </div>
             <div>
               <div className="flex justify-between mb-1">
-                <span className="text-base font-medium text-cyan-700 dark:text-white">TypeScript</span>
-                <span className="text-sm font-medium text-cyan-700 dark:text-white">75%</span>
+                <span className="text-base font-medium text-red-700 dark:text-white">Paint Booth C-301</span>
+                <span className="text-sm font-medium text-red-700 dark:text-white">45%</span>
               </div>
-              <Progress progress={75} color="cyan" />
+              <Progress progress={45} color="red" />
             </div>
           </div>
-        </div>
-
-        {/* Different Colors */}
+        </div>        {/* Daily Production Targets */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Different Colors</h3>
+          <ShowcaseSectionHeader>Daily Production Targets</ShowcaseSectionHeader>
           <div className="space-y-4">
-            <Progress progress={45} color="blue" />
-            <Progress progress={50} color="gray" />
-            <Progress progress={60} color="red" />
-            <Progress progress={70} color="green" />
-            <Progress progress={80} color="yellow" />
+            <div>
+              <div className="flex justify-between text-sm mb-1">
+                <span>Widget Production Target</span>
+                <span>2,340 / 2,500 units</span>
+              </div>
+              <Progress progress={93} color="green" />
+            </div>
+            <div>
+              <div className="flex justify-between text-sm mb-1">
+                <span>Quality Check Target</span>
+                <span>1,890 / 2,340 units</span>
+              </div>
+              <Progress progress={81} color="blue" />
+            </div>
+            <div>
+              <div className="flex justify-between text-sm mb-1">
+                <span>Packaging Target</span>
+                <span>1,256 / 1,890 units</span>
+              </div>
+              <Progress progress={66} color="yellow" />
+            </div>
             <Progress progress={90} color="indigo" />
             <Progress progress={95} color="purple" />
           </div>
-        </div>
-
-        {/* Different Sizes */}
+        </div>        {/* Different Sizes */}
         <div>
-          <h3 className="text-lg font-medium mb-4">Different Sizes</h3>
+          <ShowcaseSectionHeader>Different Sizes</ShowcaseSectionHeader>
           <div className="space-y-4">
             <div>
               <p className="text-sm text-gray-600 mb-2">Small</p>
