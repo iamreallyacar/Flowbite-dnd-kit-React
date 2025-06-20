@@ -5,16 +5,12 @@ import {
   DragOverlay,
   useDraggable,
   useDroppable,
-  PointerSensor,
   KeyboardSensor,
   TouchSensor,
   MouseSensor,
   useSensor,
   useSensors,
 } from '@dnd-kit/core'
-import {
-  sortableKeyboardCoordinates,
-} from '@dnd-kit/sortable'
 import type { DragEndEvent, DragStartEvent, KeyboardCoordinateGetter } from '@dnd-kit/core'
 import { 
   ShowcaseCard, 

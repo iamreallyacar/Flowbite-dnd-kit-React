@@ -1,4 +1,4 @@
-import { Button, Card, Badge } from 'flowbite-react'
+import { Button, Card } from 'flowbite-react'
 import { useState } from 'react'
 import {
   DndContext,
@@ -19,7 +19,6 @@ import {
   useSortable,
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { FaCog, FaTools, FaClipboard, FaPalette, FaWrench } from 'react-icons/fa'
 import { 
   ShowcaseCard, 
   ShowcaseSubheading

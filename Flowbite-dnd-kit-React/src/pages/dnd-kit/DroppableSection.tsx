@@ -7,7 +7,6 @@ import {
   useDroppable,
 } from '@dnd-kit/core'
 import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core'
-import { FaInbox, FaClipboard, FaTools, FaCog } from 'react-icons/fa'
 import { 
   ShowcaseCard, 
   ShowcaseSubheading, 
