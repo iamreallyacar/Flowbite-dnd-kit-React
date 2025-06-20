@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom'
-import { Card, Button, Badge, Avatar, Progress } from 'flowbite-react'
+import { Button, Badge, Avatar, Progress } from 'flowbite-react'
 import { useState } from 'react'
+import { 
+  ShowcaseCard,
+  ShowcasePageTitle, 
+  ShowcaseText, 
+  ShowcaseHeading,
+  ShowcaseSubheading
+} from '../components'
 import {
   DndContext,
   closestCenter,
@@ -84,7 +91,6 @@ function DraggableWorker({ worker }: DraggableWorkerProps) {
       default: return 'gray'
     }
   }
-
   return (
     <div
       ref={setNodeRef}
@@ -92,7 +98,7 @@ function DraggableWorker({ worker }: DraggableWorkerProps) {
       {...attributes}
       {...listeners}
       className={`
-        bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+        bg-gray-800 border border-gray-600 
         rounded-lg p-4 cursor-move hover:shadow-md transition-shadow mb-3
         ${isDragging ? 'shadow-lg ring-2 ring-blue-500' : ''}
       `}
@@ -104,12 +110,12 @@ function DraggableWorker({ worker }: DraggableWorkerProps) {
         />
         <div className="flex-1">
           <div className="flex items-center justify-between">
-            <h4 className="font-semibold text-gray-900 dark:text-white">{worker.name}</h4>
+            <h4 className="font-semibold text-white">{worker.name}</h4>
             <Badge color={getAvailabilityColor(worker.availability)} size="xs">
               {worker.availability}
             </Badge>
           </div>
-          <p className="text-sm text-gray-600 dark:text-gray-400">{worker.role}</p>
+          <p className="text-sm text-gray-400">{worker.role}</p>
           <div className="flex flex-wrap gap-1 mt-2">
             {worker.skills.slice(0, 3).map((skill) => (
               <Badge key={skill} color="gray" size="xs">
@@ -118,13 +124,13 @@ function DraggableWorker({ worker }: DraggableWorkerProps) {
             ))}
           </div>
           {worker.currentTask && (
-            <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">
+            <p className="text-xs text-blue-400 mt-1">
               Current: {worker.currentTask}
             </p>
           )}
         </div>
         <div className="text-right">
-          <div className="text-sm font-medium">{worker.efficiency}%</div>
+          <div className="text-sm font-medium text-white">{worker.efficiency}%</div>
           <div className="text-xs text-gray-500">{worker.hoursWorked}h today</div>
         </div>
       </div>
@@ -342,23 +348,22 @@ export function ResourceManagement() {
   const availableWorkers = workers.filter(w => w.availability === 'available')
   const busyWorkers = workers.filter(w => w.availability === 'busy')
   const offlineWorkers = workers.filter(w => w.availability === 'offline')
-
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
+    <div className="min-h-screen bg-black p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <Link to="/" className="text-blue-600 dark:text-blue-400 hover:underline mb-4 inline-block">
+          <Link to="/" className="text-blue-400 hover:text-blue-300 underline mb-4 inline-block">
             ← Back to Main
           </Link>
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+              <ShowcasePageTitle>
                 Resource Management
-              </h1>
-              <p className="text-gray-600 dark:text-gray-400">
+              </ShowcasePageTitle>
+              <ShowcaseText>
                 Manage workers, machines, and materials efficiently
-              </p>
+              </ShowcaseText>
             </div>
             <div className="flex space-x-3">
               <Link to="/dashboard">
@@ -379,20 +384,19 @@ export function ResourceManagement() {
           sensors={sensors}
           collisionDetection={closestCenter}
           onDragEnd={handleDragEnd}
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+        >          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
             {/* Workers Section */}
             <div className="lg:col-span-1">
-              <Card>
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+              <ShowcaseCard>
+                <ShowcaseHeading>
                   Workers ({workers.length})
-                </h2>
+                </ShowcaseHeading>
                 
                 {/* Available Workers */}
                 <div className="mb-6">
-                  <h3 className="text-lg font-medium text-green-600 mb-3">
+                  <ShowcaseSubheading className="text-green-400 mb-3">
                     Available ({availableWorkers.length})
-                  </h3>
+                  </ShowcaseSubheading>
                   <SortableContext items={availableWorkers} strategy={verticalListSortingStrategy}>
                     <div>
                       {availableWorkers.map((worker) => (
@@ -404,9 +408,9 @@ export function ResourceManagement() {
 
                 {/* Busy Workers */}
                 <div className="mb-6">
-                  <h3 className="text-lg font-medium text-yellow-600 mb-3">
+                  <ShowcaseSubheading className="text-yellow-400 mb-3">
                     Busy ({busyWorkers.length})
-                  </h3>
+                  </ShowcaseSubheading>
                   <div>
                     {busyWorkers.map((worker) => (
                       <DraggableWorker key={worker.id} worker={worker} />
@@ -416,59 +420,57 @@ export function ResourceManagement() {
 
                 {/* Offline Workers */}
                 <div>
-                  <h3 className="text-lg font-medium text-red-600 mb-3">
+                  <ShowcaseSubheading className="text-red-400 mb-3">
                     Offline ({offlineWorkers.length})
-                  </h3>
+                  </ShowcaseSubheading>
                   <div>
                     {offlineWorkers.map((worker) => (
                       <DraggableWorker key={worker.id} worker={worker} />
                     ))}
                   </div>
                 </div>
-              </Card>
-            </div>
-
-            {/* Machines Section */}
+              </ShowcaseCard>
+            </div>            {/* Machines Section */}
             <div className="lg:col-span-2">
-              <Card className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+              <ShowcaseCard className="mb-8">
+                <ShowcaseHeading>
                   Machines ({machines.length})
-                </h2>
+                </ShowcaseHeading>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {machines.map((machine) => (
                     <div
                       key={machine.id}
-                      className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800"
+                      className="p-4 border border-gray-600 rounded-lg bg-gray-800"
                     >
                       <div className="flex items-center justify-between mb-3">
-                        <h4 className="font-semibold text-gray-900 dark:text-white">{machine.name}</h4>
+                        <h4 className="font-semibold text-white">{machine.name}</h4>
                         <Badge color={getStatusColor(machine.status)}>
                           {machine.status}
                         </Badge>
                       </div>
                       
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{machine.type}</p>
+                      <p className="text-sm text-gray-400 mb-3">{machine.type}</p>
                       
                       <div className="space-y-2">
                         <div>
                           <div className="flex justify-between text-sm mb-1">
-                            <span>Utilization</span>
-                            <span className="font-medium">{machine.utilization}%</span>
+                            <span className="text-gray-400">Utilization</span>
+                            <span className="font-medium text-white">{machine.utilization}%</span>
                           </div>
                           <Progress progress={machine.utilization} color={machine.utilization > 70 ? 'green' : 'yellow'} />
                         </div>
                         
                         {machine.assignedWorker && (
                           <p className="text-sm">
-                            <span className="text-gray-600 dark:text-gray-400">Operator:</span>
-                            <span className="font-medium ml-1">{machine.assignedWorker}</span>
+                            <span className="text-gray-400">Operator:</span>
+                            <span className="font-medium text-white ml-1">{machine.assignedWorker}</span>
                           </p>
                         )}
                         
                         {machine.currentJob && (
                           <p className="text-sm">
-                            <span className="text-gray-600 dark:text-gray-400">Current Job:</span>
-                            <span className="font-medium ml-1">{machine.currentJob}</span>
+                            <span className="text-gray-400">Current Job:</span>
+                            <span className="font-medium text-white ml-1">{machine.currentJob}</span>
                           </p>
                         )}
                         
@@ -480,43 +482,41 @@ export function ResourceManagement() {
                     </div>
                   ))}
                 </div>
-              </Card>
+              </ShowcaseCard>
             </div>
           </div>
-        </DndContext>
-
-        {/* Materials Section */}
-        <Card>
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+        </DndContext>        {/* Materials Section */}
+        <ShowcaseCard>
+          <ShowcaseHeading>
             Materials & Inventory
-          </h2>
+          </ShowcaseHeading>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {materials.map((material) => (
               <div
                 key={material.id}
-                className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg"
+                className="p-4 border border-gray-600 rounded-lg"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-semibold text-gray-900 dark:text-white">{material.name}</h4>
+                  <h4 className="font-semibold text-white">{material.name}</h4>
                   <Badge color={getMaterialStatusColor(material.status)} size="xs">
                     {material.status}
                   </Badge>
                 </div>
                 
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{material.type}</p>
+                <p className="text-sm text-gray-400 mb-2">{material.type}</p>
                 
                 <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
-                    <span>Quantity:</span>
-                    <span className="font-medium">{material.quantity} {material.unit}</span>
+                    <span className="text-gray-400">Quantity:</span>
+                    <span className="font-medium text-white">{material.quantity} {material.unit}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Location:</span>
-                    <span className="font-medium">{material.location}</span>
+                    <span className="text-gray-400">Location:</span>
+                    <span className="font-medium text-white">{material.location}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Reorder Level:</span>
-                    <span className="font-medium">{material.reorderLevel} {material.unit}</span>
+                    <span className="text-gray-400">Reorder Level:</span>
+                    <span className="font-medium text-white">{material.reorderLevel} {material.unit}</span>
                   </div>
                   <div className="text-xs text-gray-500 mt-2">
                     Supplier: {material.supplier}
@@ -533,43 +533,41 @@ export function ResourceManagement() {
               </div>
             ))}
           </div>
-        </Card>
-
-        {/* Resource Summary */}
+        </ShowcaseCard>        {/* Resource Summary */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8">
-          <Card>
+          <ShowcaseCard>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">{availableWorkers.length}</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Available Workers</div>
+              <div className="text-2xl font-bold text-green-400">{availableWorkers.length}</div>
+              <div className="text-sm text-gray-400">Available Workers</div>
             </div>
-          </Card>
+          </ShowcaseCard>
           
-          <Card>
+          <ShowcaseCard>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">
+              <div className="text-2xl font-bold text-green-400">
                 {machines.filter(m => m.status === 'running').length}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Running Machines</div>
+              <div className="text-sm text-gray-400">Running Machines</div>
             </div>
-          </Card>
+          </ShowcaseCard>
           
-          <Card>
+          <ShowcaseCard>
             <div className="text-center">
-              <div className="text-2xl font-bold text-red-600">
+              <div className="text-2xl font-bold text-red-400">
                 {materials.filter(m => m.status === 'out-of-stock').length}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Out of Stock</div>
+              <div className="text-sm text-gray-400">Out of Stock</div>
             </div>
-          </Card>
+          </ShowcaseCard>
           
-          <Card>
+          <ShowcaseCard>
             <div className="text-center">
-              <div className="text-2xl font-bold text-yellow-600">
+              <div className="text-2xl font-bold text-yellow-400">
                 {materials.filter(m => m.status === 'low-stock').length}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Low Stock Items</div>
+              <div className="text-sm text-gray-400">Low Stock Items</div>
             </div>
-          </Card>
+          </ShowcaseCard>
         </div>
       </div>
     </div>

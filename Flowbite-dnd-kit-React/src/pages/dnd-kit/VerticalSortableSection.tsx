@@ -20,6 +20,11 @@ import {
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { FaCog, FaTools, FaClipboard } from 'react-icons/fa'
+import { 
+  ShowcaseCard, 
+  ShowcaseSubheading, 
+  ShowcaseText
+} from '../../components/ShowcaseTheme'
 
 interface ProductionJob {
   id: string
@@ -114,16 +119,15 @@ export function VerticalSortableSection() {
         return arrayMove(items, oldIndex, newIndex)
       })
     }
-  }
-  return (
-    <section className="mb-12">
-      <h2 className="text-2xl font-semibold mb-6">Production Job Queue</h2>
-      <p className="text-gray-600 mb-6">
+  }  return (
+    <ShowcaseCard>
+      <ShowcaseSubheading>Production Job Queue</ShowcaseSubheading>
+      <ShowcaseText>
         Reorder production jobs by dragging them up or down to prioritize tasks. 
         This demonstrates how sortable lists can be used for job sequencing and priority management.
-      </p>
-      <Card className="max-w-2xl">
-        <h5 className="text-xl font-bold tracking-tight text-gray-900 mb-4">
+      </ShowcaseText>
+      <Card className="max-w-2xl bg-gray-800 border-gray-700">
+        <h5 className="text-xl font-bold tracking-tight text-white mb-4">
           Scheduled Production Jobs
         </h5>
         <DndContext
@@ -176,8 +180,7 @@ export function VerticalSortableSection() {
                           <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
                           <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
                           <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                        </div>
-                      </div>
+                        </div>                      </div>
                     </Card>
                   </SortableItem>
                 )
@@ -186,6 +189,6 @@ export function VerticalSortableSection() {
           </SortableContext>
         </DndContext>
       </Card>
-    </section>
+    </ShowcaseCard>
   )
 }

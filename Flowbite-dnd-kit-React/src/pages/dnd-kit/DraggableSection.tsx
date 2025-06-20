@@ -8,6 +8,12 @@ import {
 } from '@dnd-kit/core'
 import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core'
 import { FaGripVertical, FaCog, FaClipboard, FaTools } from 'react-icons/fa'
+import { 
+  ShowcaseCard, 
+  ShowcaseSubheading, 
+  ShowcaseText, 
+  ShowcaseSubsection
+} from '../../components/ShowcaseTheme'
 
 interface DraggableItemProps {
   id: string
@@ -174,19 +180,17 @@ export function DraggableSection() {
       </Card>
     )
   }
-
-  return (    <div className="space-y-8 mb-12">
+  return (
+    <ShowcaseCard>
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Draggable Production Jobs</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">
+        <ShowcaseSubheading>Draggable Production Jobs</ShowcaseSubheading>
+        <ShowcaseText>
           Production jobs can be dragged and dropped to reassign them between machines, work centers, or time slots.
           This demonstrates how drag-and-drop interfaces can streamline production scheduling workflows.
-        </p>
-      </div>
-
-      {/* Basic Draggable Example */}
+        </ShowcaseText>
+      </div>      {/* Basic Draggable Example */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Basic Draggable Items</h3>
+        <ShowcaseSubsection>Basic Draggable Items</ShowcaseSubsection>
         <div className="mb-4">
           <Button onClick={resetItems} size="sm" color="gray">
             Reset
@@ -232,7 +236,7 @@ export function DraggableSection() {
         </DndContext>
       </div>      {/* Drag Handle Example */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Drag Handles</h3>
+        <ShowcaseSubsection>Drag Handles</ShowcaseSubsection>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
           Items with drag handles can only be dragged by clicking on the handle area.
         </p>
@@ -252,7 +256,7 @@ export function DraggableSection() {
 
       {/* Disabled State Example */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Disabled State</h3>
+        <ShowcaseSubsection>Disabled State</ShowcaseSubsection>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
           Draggable items can be disabled to prevent interaction.
         </p>
@@ -289,27 +293,26 @@ export function DraggableSection() {
 
       {/* useDraggable Properties */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">useDraggable Hook Properties</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card>
-            <h4 className="text-lg font-semibold mb-3">Configuration</h4>
-            <ul className="space-y-2 text-sm">
-              <li><code className="bg-gray-100 px-2 py-1 rounded">id</code> - Unique identifier</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">data</code> - Custom data attached to draggable</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">disabled</code> - Disable drag functionality</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">attributes</code> - Accessibility attributes</li>
+        <ShowcaseSubsection>useDraggable Hook Properties</ShowcaseSubsection>        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card className="bg-gray-800 border-gray-700">
+            <h4 className="text-lg font-semibold mb-3 text-white">Configuration</h4>
+            <ul className="space-y-2 text-sm text-gray-300">
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">id</code> - Unique identifier</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">data</code> - Custom data attached to draggable</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">disabled</code> - Disable drag functionality</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">attributes</code> - Accessibility attributes</li>
             </ul>
           </Card>
 
-          <Card>
-            <h4 className="text-lg font-semibold mb-3">Returned Values</h4>
-            <ul className="space-y-2 text-sm">
-              <li><code className="bg-gray-100 px-2 py-1 rounded">setNodeRef</code> - Ref to attach to DOM element</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">listeners</code> - Event listeners for drag</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">transform</code> - Current transformation</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">isDragging</code> - Whether currently being dragged</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">node</code> - DOM node reference</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">over</code> - Current droppable being dragged over</li>
+          <Card className="bg-gray-800 border-gray-700">
+            <h4 className="text-lg font-semibold mb-3 text-white">Returned Values</h4>
+            <ul className="space-y-2 text-sm text-gray-300">
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">setNodeRef</code> - Ref to attach to DOM element</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">listeners</code> - Event listeners for drag</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">transform</code> - Current transformation</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">isDragging</code> - Whether currently being dragged</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">node</code> - DOM node reference</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">over</code> - Current droppable being dragged over</li>
             </ul>
           </Card>
         </div>
@@ -317,9 +320,8 @@ export function DraggableSection() {
 
       {/* Code Example */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Code Example</h3>
-        <Card>
-          <pre className="text-sm overflow-x-auto">
+        <ShowcaseSubsection>Code Example</ShowcaseSubsection>        <Card className="bg-gray-800 border-gray-700">
+          <pre className="text-sm overflow-x-auto text-gray-200">
             <code>{
             `import { useDraggable } from '@dnd-kit/core'
 
@@ -352,10 +354,9 @@ export function DraggableSection() {
                   {children}
                 </div>
               )
-            }`}</code>
-          </pre>
+            }`}</code>          </pre>
         </Card>
       </div>
-    </div>
+    </ShowcaseCard>
   )
 }

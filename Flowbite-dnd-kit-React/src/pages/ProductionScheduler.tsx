@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom'
-import { Card, Button, Badge, Modal } from 'flowbite-react'
+import { Button, Badge, Modal } from 'flowbite-react'
 import { useState } from 'react'
+import { 
+  ShowcaseCard,
+  ShowcasePageTitle, 
+  ShowcaseText, 
+  ShowcaseHeading,
+  ShowcaseSubheading
+} from '../components'
 import {
   DndContext,
   closestCenter,
@@ -85,7 +92,6 @@ function SortableJob({ job, onJobClick }: SortableJobProps) {
     // Each hour = 60px, minimum 120px
     return Math.max(120, duration * 60)
   }
-
   return (
     <div
       ref={setNodeRef}
@@ -96,7 +102,7 @@ function SortableJob({ job, onJobClick }: SortableJobProps) {
       {...attributes}
       {...listeners}
       className={`
-        relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+        relative bg-gray-800 border border-gray-600 
         rounded-lg p-3 cursor-move hover:shadow-md transition-shadow mr-2 min-h-[80px]
         ${isDragging ? 'shadow-lg' : ''}
       `}
@@ -105,14 +111,14 @@ function SortableJob({ job, onJobClick }: SortableJobProps) {
       <div className={`absolute top-2 left-2 w-3 h-3 rounded-full ${getPriorityColor(job.priority)}`}></div>
       <div className="ml-5">
         <div className="flex items-center justify-between mb-1">
-          <h6 className="text-sm font-semibold text-gray-900 dark:text-white truncate">
+          <h6 className="text-sm font-semibold text-white truncate">
             {job.orderId}
           </h6>
           <Badge color={getStatusColor(job.status)} size="xs">
             {job.status}
           </Badge>
         </div>
-        <p className="text-xs text-gray-600 dark:text-gray-400 mb-1 truncate">
+        <p className="text-xs text-gray-400 mb-1 truncate">
           {job.productName}
         </p>
         <div className="flex justify-between text-xs text-gray-500">
@@ -131,12 +137,12 @@ interface MachineRowProps {
 
 function MachineRow({ machine, onJobClick }: MachineRowProps) {
   return (
-    <div className="border-b border-gray-200 dark:border-gray-700 py-4">
+    <div className="border-b border-gray-600 py-4">
       <div className="grid grid-cols-5 gap-4">
         <div className="col-span-1">
-          <div className="sticky left-0 bg-white dark:bg-gray-900 p-3">
-            <h5 className="font-semibold text-gray-900 dark:text-white">{machine.name}</h5>
-            <p className="text-sm text-gray-600 dark:text-gray-400">{machine.type}</p>
+          <div className="sticky left-0 bg-black p-3">
+            <h5 className="font-semibold text-white">{machine.name}</h5>
+            <p className="text-sm text-gray-400">{machine.type}</p>
             <Badge color="info" size="xs">
               {machine.jobs.length} jobs
             </Badge>
@@ -148,7 +154,7 @@ function MachineRow({ machine, onJobClick }: MachineRowProps) {
               {machine.jobs.map((job) => (
                 <SortableJob key={job.id} job={job} onJobClick={onJobClick} />
               ))}
-              <div className="flex-shrink-0 w-40 h-20 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400">
+              <div className="flex-shrink-0 w-40 h-20 border-2 border-dashed border-gray-600 rounded-lg flex items-center justify-center text-gray-500">
                 <span className="text-sm">Drop job here</span>
               </div>
             </div>
@@ -355,23 +361,22 @@ export function ProductionScheduler() {
     setSelectedJob(job)
     setShowJobModal(true)
   }
-
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
+    <div className="min-h-screen bg-black p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <Link to="/" className="text-blue-600 dark:text-blue-400 hover:underline mb-4 inline-block">
+          <Link to="/" className="text-blue-400 hover:text-blue-300 underline mb-4 inline-block">
             ← Back to Main
           </Link>
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+              <ShowcasePageTitle>
                 Production Scheduler
-              </h1>
-              <p className="text-gray-600 dark:text-gray-400">
+              </ShowcasePageTitle>
+              <ShowcaseText>
                 Drag and drop jobs between machines to optimize production schedule
-              </p>
+              </ShowcaseText>
             </div>
             <div className="flex space-x-3">
               <Link to="/dashboard">
@@ -386,28 +391,24 @@ export function ProductionScheduler() {
               </Link>
             </div>
           </div>
-        </div>
-
-        {/* Time Header */}
-        <Card className="mb-6">
+        </div>        {/* Time Header */}
+        <ShowcaseCard className="mb-6">
           <div className="grid grid-cols-5 gap-4">
             <div className="col-span-1">
-              <h3 className="font-semibold text-gray-900 dark:text-white">Machine / Resource</h3>
+              <ShowcaseHeading className="mb-0">Machine / Resource</ShowcaseHeading>
             </div>
             <div className="col-span-4">
-              <div className="grid grid-cols-12 gap-2 text-center text-sm text-gray-600 dark:text-gray-400">
+              <div className="grid grid-cols-12 gap-2 text-center text-sm text-gray-400">
                 {Array.from({ length: 12 }, (_, i) => (
-                  <div key={i} className="border-r border-gray-200 dark:border-gray-700 py-2">
+                  <div key={i} className="border-r border-gray-600 py-2">
                     {String(8 + i).padStart(2, '0')}:00
                   </div>
                 ))}
               </div>
             </div>
           </div>
-        </Card>
-
-        {/* Gantt Chart */}
-        <Card>
+        </ShowcaseCard>        {/* Gantt Chart */}
+        <ShowcaseCard>
           <DndContext
             sensors={sensors}
             collisionDetection={closestCenter}
@@ -424,23 +425,21 @@ export function ProductionScheduler() {
               ))}
             </div>
           </DndContext>
-        </Card>
-
-        {/* Legend */}
-        <Card className="mt-6">
-          <h5 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Legend</h5>
+        </ShowcaseCard>        {/* Legend */}
+        <ShowcaseCard className="mt-6">
+          <ShowcaseSubheading>Legend</ShowcaseSubheading>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <span className="text-sm">High Priority</span>
+              <span className="text-sm text-gray-300">High Priority</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-              <span className="text-sm">Medium Priority</span>
+              <span className="text-sm text-gray-300">Medium Priority</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              <span className="text-sm">Low Priority</span>
+              <span className="text-sm text-gray-300">Low Priority</span>
             </div>
             <div className="flex items-center space-x-2">
               <Badge color="info" size="xs">Scheduled</Badge>
@@ -449,7 +448,7 @@ export function ProductionScheduler() {
               <Badge color="failure" size="xs">Delayed</Badge>
             </div>
           </div>
-        </Card>        {/* Job Details Modal */}
+        </ShowcaseCard>{/* Job Details Modal */}
         <Modal show={showJobModal} onClose={() => setShowJobModal(false)}>
           <div className="p-6">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">

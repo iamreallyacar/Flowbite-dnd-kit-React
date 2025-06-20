@@ -7,6 +7,13 @@ import {
   useDroppable,
 } from '@dnd-kit/core'
 import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core'
+import { FaInbox, FaClipboard, FaTools, FaCog } from 'react-icons/fa'
+import { 
+  ShowcaseCard, 
+  ShowcaseSubheading, 
+  ShowcaseText, 
+  ShowcaseSubsection
+} from '../../components/ShowcaseTheme'
 
 interface DraggableCardProps {
   id: string
@@ -162,20 +169,17 @@ export function DroppableSection() {
       </Card>
     )
   }
-
   return (
-    <div className="space-y-8 mb-12">
+    <ShowcaseCard>
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Droppable Areas</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">
+        <ShowcaseSubheading>Droppable Areas</ShowcaseSubheading>
+        <ShowcaseText>
           Droppable components define areas where draggable items can be dropped. 
           They can be configured to accept specific types of items and provide visual feedback.
-        </p>
-      </div>
-
-      {/* Type-Aware Droppable Example */}
+        </ShowcaseText>
+      </div>      {/* Type-Aware Droppable Example */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Type-Aware Drop Zones</h3>
+        <ShowcaseSubsection>Type-Aware Drop Zones</ShowcaseSubsection>
         <div className="mb-4">
           <Button onClick={resetItems} size="sm" color="gray">
             Reset Items
@@ -260,7 +264,7 @@ export function DroppableSection() {
 
       {/* Droppable Properties */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">useDroppable Hook Properties</h3>
+        <ShowcaseSubsection>useDroppable Hook Properties</ShowcaseSubsection>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card>
             <h4 className="text-lg font-semibold mb-3">Configuration</h4>
@@ -288,7 +292,7 @@ export function DroppableSection() {
 
       {/* Visual States */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Visual States</h3>
+        <ShowcaseSubsection>Visual States</ShowcaseSubsection>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card>
             <h4 className="text-lg font-semibold mb-3">Default State</h4>
@@ -315,7 +319,7 @@ export function DroppableSection() {
 
       {/* Code Example */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Code Example</h3>
+        <ShowcaseSubsection>Code Example</ShowcaseSubsection>
         <Card>
           <pre className="text-sm overflow-x-auto">
             <code>{
@@ -337,12 +341,11 @@ export function DroppableSection() {
                 >
                   {children}
                 </div>
-              )
-            }`
+              )            }`
             }</code>
           </pre>
         </Card>
       </div>
-    </div>
+    </ShowcaseCard>
   )
 }

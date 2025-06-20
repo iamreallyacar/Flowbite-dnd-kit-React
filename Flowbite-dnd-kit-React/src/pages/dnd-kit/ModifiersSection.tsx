@@ -5,18 +5,24 @@ import {
   DragOverlay,
   useDraggable,
   useDroppable,
+  PointerSensor,
   useSensor,
   useSensors,
-  PointerSensor,
 } from '@dnd-kit/core'
-import type { DragEndEvent, DragStartEvent, Modifier } from '@dnd-kit/core'
-import {
-  restrictToVerticalAxis,
-  restrictToHorizontalAxis,
-  restrictToWindowEdges,
-  restrictToParentElement,
+import { 
+  restrictToFirstScrollableAncestor,
   snapCenterToCursor,
+  restrictToWindowEdges,
+  restrictToHorizontalAxis,
+  restrictToVerticalAxis,
 } from '@dnd-kit/modifiers'
+import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core'
+import { 
+  ShowcaseCard, 
+  ShowcaseSubheading, 
+  ShowcaseText, 
+  ShowcaseSubsection
+} from '../../components/ShowcaseTheme'
 
 interface ModifierItem {
   id: string
@@ -76,6 +82,11 @@ export function ModifiersSection() {
   const [droppedItems, setDroppedItems] = useState<ModifierItem[]>([])
   const [activeId, setActiveId] = useState<string | null>(null)
 
+  // Sensors
+  const sensors = useSensors(
+    useSensor(PointerSensor)
+  )
+
   // Modifier configuration
   const [horizontalOnly, setHorizontalOnly] = useState(false)
   const [verticalOnly, setVerticalOnly] = useState(false)
@@ -83,21 +94,13 @@ export function ModifiersSection() {
   const [windowBounds, setWindowBounds] = useState(false)
   const [parentBounds, setParentBounds] = useState(false)
 
-  const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 8,
-      },
-    })
-  )
-
   // Build modifiers array based on settings
-  const modifiers: Modifier[] = []
+  const modifiers = []
   if (horizontalOnly) modifiers.push(restrictToHorizontalAxis)
   if (verticalOnly) modifiers.push(restrictToVerticalAxis)
   if (snapToCursor) modifiers.push(snapCenterToCursor)
   if (windowBounds) modifiers.push(restrictToWindowEdges)
-  if (parentBounds) modifiers.push(restrictToParentElement)
+  if (parentBounds) modifiers.push(restrictToFirstScrollableAncestor)
 
   function handleDragStart(event: DragStartEvent) {
     setActiveId(event.active.id as string)
@@ -149,20 +152,17 @@ export function ModifiersSection() {
       </Card>
     )
   }
-
   return (
-    <div className="space-y-8 mb-12">
+    <ShowcaseCard>
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Modifiers</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">
+        <ShowcaseSubheading>Modifiers</ShowcaseSubheading>
+        <ShowcaseText>
           Modifiers alter the behavior of draggable elements during drag operations.
           They can restrict movement, snap to positions, or constrain to boundaries.
-        </p>
-      </div>
-
-      {/* Modifier Configuration */}
+        </ShowcaseText>
+      </div>      {/* Modifier Configuration */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Modifier Configuration</h3>
+        <ShowcaseSubsection>Modifier Configuration</ShowcaseSubsection>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
           <Card>
             <h4 className="text-lg font-semibold mb-3">Movement Restrictions</h4>
@@ -361,14 +361,13 @@ function MyComponent() {
   ]
 
   return (
-    <DndContext modifiers={modifiers}>
-      {/* Your draggable components */}
+    <DndContext modifiers={modifiers}>      {/* Your draggable components */}
     </DndContext>
   )
 }`}</code>
           </pre>
         </Card>
       </div>
-    </div>
+    </ShowcaseCard>
   )
 }

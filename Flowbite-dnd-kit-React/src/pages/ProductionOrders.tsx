@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
-import { Card, Button, Badge, Modal, TextInput, Label, Select, Textarea } from 'flowbite-react'
+import { Button, Badge, Modal, TextInput, Label, Select, Textarea } from 'flowbite-react'
 import { useState } from 'react'
 import { 
+  ShowcaseCard,
   ShowcasePageTitle, 
   ShowcaseText, 
   ShowcaseMetricValue, 
@@ -196,9 +197,8 @@ export function ProductionOrders() {
     cancelled: orders.filter(o => o.status === 'cancelled').length
   }
 
-  return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
-      <div className="max-w-7xl mx-auto">        {/* Header */}
+  return (    <div className="min-h-screen bg-black p-6">
+      <div className="max-w-7xl mx-auto">{/* Header */}
         <div className="mb-8">
           <Link to="/" className="text-blue-400 hover:text-blue-300 underline mb-4 inline-block">
             ← Back to Main
@@ -225,49 +225,47 @@ export function ProductionOrders() {
           </div>
         </div>        {/* Statistics Cards */}
         <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
-          <Card>
+          <ShowcaseCard>
             <div className="text-center">
               <ShowcaseMetricValue>{orderStats.total}</ShowcaseMetricValue>
               <ShowcaseMetricLabel>Total Orders</ShowcaseMetricLabel>
             </div>
-          </Card>
-          <Card>
+          </ShowcaseCard>
+          <ShowcaseCard>
             <div className="text-center">
-              <ShowcaseMetricValue className="text-gray-600">{orderStats.pending}</ShowcaseMetricValue>
+              <ShowcaseMetricValue className="text-gray-400">{orderStats.pending}</ShowcaseMetricValue>
               <ShowcaseMetricLabel>Pending</ShowcaseMetricLabel>
             </div>
-          </Card>
-          <Card>
+          </ShowcaseCard>
+          <ShowcaseCard>
             <div className="text-center">
-              <ShowcaseMetricValue className="text-blue-600">{orderStats.scheduled}</ShowcaseMetricValue>
+              <ShowcaseMetricValue className="text-blue-400">{orderStats.scheduled}</ShowcaseMetricValue>
               <ShowcaseMetricLabel>Scheduled</ShowcaseMetricLabel>
             </div>
-          </Card>
-          <Card>
+          </ShowcaseCard>
+          <ShowcaseCard>
             <div className="text-center">
-              <ShowcaseMetricValue className="text-yellow-600">{orderStats.inProgress}</ShowcaseMetricValue>
+              <ShowcaseMetricValue className="text-yellow-400">{orderStats.inProgress}</ShowcaseMetricValue>
               <ShowcaseMetricLabel>In Progress</ShowcaseMetricLabel>
             </div>
-          </Card>
-          <Card>
+          </ShowcaseCard>
+          <ShowcaseCard>
             <div className="text-center">
-              <ShowcaseMetricValue className="text-green-600">{orderStats.completed}</ShowcaseMetricValue>
+              <ShowcaseMetricValue className="text-green-400">{orderStats.completed}</ShowcaseMetricValue>
               <ShowcaseMetricLabel>Completed</ShowcaseMetricLabel>
             </div>
-          </Card>
-          <Card>
+          </ShowcaseCard>
+          <ShowcaseCard>
             <div className="text-center">
-              <ShowcaseMetricValue className="text-red-600">{orderStats.cancelled}</ShowcaseMetricValue>
+              <ShowcaseMetricValue className="text-red-400">{orderStats.cancelled}</ShowcaseMetricValue>
               <ShowcaseMetricLabel>Cancelled</ShowcaseMetricLabel>
             </div>
-          </Card>
-        </div>
-
-        {/* Filters */}
-        <Card className="mb-6">
+          </ShowcaseCard>
+        </div>        {/* Filters */}
+        <ShowcaseCard className="mb-6">
           <div className="flex flex-wrap gap-4 items-center">
             <div className="flex items-center space-x-2">
-              <Label htmlFor="status-filter">Status:</Label>
+              <Label htmlFor="status-filter" className="text-gray-300">Status:</Label>
               <Select
                 id="status-filter"
                 value={filterStatus}
@@ -283,7 +281,7 @@ export function ProductionOrders() {
               </Select>
             </div>
             <div className="flex items-center space-x-2">
-              <Label htmlFor="priority-filter">Priority:</Label>
+              <Label htmlFor="priority-filter" className="text-gray-300">Priority:</Label>
               <Select
                 id="priority-filter"
                 value={filterPriority}
@@ -297,16 +295,16 @@ export function ProductionOrders() {
               </Select>
             </div>
             <div className="flex-1"></div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-sm text-gray-400">
               Showing {filteredOrders.length} of {orders.length} orders
-            </div>          </div>
-        </Card>
-        
+            </div>
+          </div>
+        </ShowcaseCard>        
         {/* Orders Table */}
-        <Card>
+        <ShowcaseCard>
           <div className="overflow-x-auto">
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table className="w-full text-sm text-left text-gray-300">
+              <thead className="text-xs text-gray-400 uppercase bg-gray-800">
                 <tr>
                   <th scope="col" className="px-6 py-3">Order #</th>
                   <th scope="col" className="px-6 py-3">Customer</th>
@@ -322,14 +320,14 @@ export function ProductionOrders() {
               </thead>
               <tbody>
                 {filteredOrders.map((order) => (
-                  <tr key={order.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <tr key={order.id} className="bg-gray-800 border-b border-gray-600 hover:bg-gray-700">
+                    <td className="px-6 py-4 font-medium text-white whitespace-nowrap">
                       {order.orderNumber}
                     </td>
-                    <td className="px-6 py-4">{order.customerName}</td>
-                    <td className="px-6 py-4">{order.productName}</td>
-                    <td className="px-6 py-4">{order.quantity}</td>
-                    <td className="px-6 py-4">{order.dueDate}</td>
+                    <td className="px-6 py-4 text-gray-300">{order.customerName}</td>
+                    <td className="px-6 py-4 text-gray-300">{order.productName}</td>
+                    <td className="px-6 py-4 text-gray-300">{order.quantity}</td>
+                    <td className="px-6 py-4 text-gray-300">{order.dueDate}</td>
                     <td className="px-6 py-4">
                       <Badge color={getPriorityColor(order.priority)}>
                         {order.priority}
@@ -342,20 +340,20 @@ export function ProductionOrders() {
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center space-x-2">
-                        <div className="w-16 bg-gray-200 rounded-full h-2 dark:bg-gray-700">
+                        <div className="w-16 bg-gray-600 rounded-full h-2">
                           <div 
-                            className="bg-blue-600 h-2 rounded-full transition-all" 
+                            className="bg-blue-500 h-2 rounded-full transition-all" 
                             style={{ width: `${order.progress}%` }}
                           ></div>
                         </div>
-                        <span className="text-sm text-gray-600 dark:text-gray-400">{order.progress}%</span>
+                        <span className="text-sm text-gray-400">{order.progress}%</span>
                       </div>
                     </td>
                     <td className="px-6 py-4">
                       {order.assignedMachine ? (
                         <Badge color="info" size="xs">{order.assignedMachine}</Badge>
                       ) : (
-                        <span className="text-gray-400">Unassigned</span>
+                        <span className="text-gray-500">Unassigned</span>
                       )}
                     </td>
                     <td className="px-6 py-4">
@@ -377,9 +375,10 @@ export function ProductionOrders() {
                     </td>
                   </tr>
                 ))}
-              </tbody>            </table>
+              </tbody>
+            </table>
           </div>
-        </Card>        {/* Create Order Modal */}
+        </ShowcaseCard>{/* Create Order Modal */}
         <Modal show={showCreateModal} onClose={() => setShowCreateModal(false)} size="lg">
           <div className="p-6">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">

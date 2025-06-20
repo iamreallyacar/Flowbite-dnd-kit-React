@@ -7,6 +7,12 @@ import {
   useDroppable,
 } from '@dnd-kit/core'
 import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core'
+import { 
+  ShowcaseCard, 
+  ShowcaseSubheading, 
+  ShowcaseText, 
+  ShowcaseSubsection
+} from '../../components/ShowcaseTheme'
 
 interface DraggableItemProps {
   id: string
@@ -45,11 +51,10 @@ function DroppableArea({ id, children, className = '' }: DroppableAreaProps) {
   const { isOver, setNodeRef } = useDroppable({
     id: id,
   })
-
   return (
     <div
       ref={setNodeRef}
-      className={`${className} ${isOver ? 'bg-blue-50 border-blue-300' : 'bg-gray-50 border-gray-300'} 
+      className={`${className} ${isOver ? 'bg-blue-900 border-blue-400' : 'bg-gray-700 border-gray-500'} 
         border-2 border-dashed rounded-lg transition-colors min-h-32 p-4`}
     >
       {children}
@@ -133,25 +138,22 @@ export function DndContextSection() {
       </Card>
     )
   }
-
   return (
-    <div className="space-y-8 mb-12">
+    <ShowcaseCard>
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">DndContext</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">
+        <ShowcaseSubheading>DndContext</ShowcaseSubheading>
+        <ShowcaseText>
           The DndContext component wraps the part of your application where you want drag and drop to be available.
           It provides context for all draggable and droppable elements within it.
-        </p>
-      </div>
-
-      {/* Basic DndContext Example */}
+        </ShowcaseText>
+      </div>      {/* Basic DndContext Example */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Basic Drag and Drop</h3>
+        <ShowcaseSubsection>Basic Drag and Drop</ShowcaseSubsection>
         <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {Object.entries(items).map(([containerId, containerItems]) => (
               <div key={containerId}>
-                <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-2 capitalize">
+                <h4 className="text-lg font-medium text-white mb-2 capitalize">
                   {containerId.replace('container', 'Container ')}
                 </h4>
                 <DroppableArea id={containerId} className="min-h-40">
@@ -165,9 +167,8 @@ export function DndContextSection() {
                         </Card>
                       </DraggableItem>
                     ))}
-                  </div>
-                  {containerItems.length === 0 && (
-                    <div className="text-gray-400 text-center py-8">
+                  </div>                  {containerItems.length === 0 && (
+                    <div className="text-gray-300 text-center py-8">
                       Drop items here
                     </div>
                   )}
@@ -179,41 +180,34 @@ export function DndContextSection() {
             {getActiveItem()}
           </DragOverlay>
         </DndContext>
-      </div>
-
-      {/* Context Properties */}
+      </div>      {/* Context Properties */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Key DndContext Properties</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card>
-            <h4 className="text-lg font-semibold mb-3">Event Handlers</h4>
-            <ul className="space-y-2 text-sm">
-              <li><code className="bg-gray-100 px-2 py-1 rounded">onDragStart</code> - Triggered when drag begins</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">onDragMove</code> - Triggered during drag</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">onDragOver</code> - Triggered when over droppable</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">onDragEnd</code> - Triggered when drag ends</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">onDragCancel</code> - Triggered when drag is cancelled</li>
+        <ShowcaseSubsection>Key DndContext Properties</ShowcaseSubsection>        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card className="bg-gray-800 border-gray-700">            <h4 className="text-lg font-semibold mb-3 text-white">Event Handlers</h4>
+            <ul className="space-y-2 text-sm text-gray-300">
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">onDragStart</code> - Triggered when drag begins</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">onDragMove</code> - Triggered during drag</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">onDragOver</code> - Triggered when over droppable</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">onDragEnd</code> - Triggered when drag ends</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">onDragCancel</code> - Triggered when drag is cancelled</li>
             </ul>
-          </Card>
-          
-          <Card>
-            <h4 className="text-lg font-semibold mb-3">Configuration</h4>
-            <ul className="space-y-2 text-sm">
-              <li><code className="bg-gray-100 px-2 py-1 rounded">sensors</code> - Input methods (mouse, keyboard, touch)</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">collisionDetection</code> - How collisions are detected</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">modifiers</code> - Modify drag behavior</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">measuring</code> - Control measurement strategy</li>
-              <li><code className="bg-gray-100 px-2 py-1 rounded">autoScroll</code> - Enable automatic scrolling</li>
+          </Card>          
+          <Card className="bg-gray-800 border-gray-700">
+            <h4 className="text-lg font-semibold mb-3 text-white">Configuration</h4>
+            <ul className="space-y-2 text-sm text-gray-300">
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">sensors</code> - Input methods (mouse, keyboard, touch)</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">collisionDetection</code> - How collisions are detected</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">modifiers</code> - Modify drag behavior</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">measuring</code> - Control measurement strategy</li>
+              <li><code className="bg-gray-700 text-gray-200 px-2 py-1 rounded">autoScroll</code> - Enable automatic scrolling</li>
             </ul>
           </Card>
         </div>
-      </div>
-
-      {/* Code Example */}
+      </div>      {/* Code Example */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Code Example</h3>
-        <Card>
-          <pre className="text-sm overflow-x-auto">
+        <ShowcaseSubsection>Code Example</ShowcaseSubsection>
+        <Card className="bg-gray-800 border-gray-700">
+          <pre className="text-sm overflow-x-auto text-gray-200">
             <code>{`import { DndContext } from '@dnd-kit/core'
 
 function App() {
@@ -228,9 +222,8 @@ function App() {
     </DndContext>
   )
 }`}</code>
-          </pre>
-        </Card>
+          </pre>        </Card>
       </div>
-    </div>
+    </ShowcaseCard>
   )
 }

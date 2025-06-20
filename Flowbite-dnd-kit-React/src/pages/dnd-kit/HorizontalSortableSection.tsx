@@ -1,4 +1,4 @@
-import { Button, Card } from 'flowbite-react'
+import { Button, Card, Badge } from 'flowbite-react'
 import { useState } from 'react'
 import {
   DndContext,
@@ -19,6 +19,11 @@ import {
   useSortable,
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
+import { FaCog, FaTools, FaClipboard, FaPalette, FaWrench } from 'react-icons/fa'
+import { 
+  ShowcaseCard, 
+  ShowcaseSubheading
+} from '../../components/ShowcaseTheme'
 
 interface CardItem {
   id: string
@@ -77,10 +82,9 @@ export function HorizontalSortableSection() {
       })
     }
   }
-
   return (
-    <section className="mb-12">
-      <h2 className="text-2xl font-semibold mb-6">Horizontal Sortable Cards</h2>
+    <ShowcaseCard>
+      <ShowcaseSubheading>Horizontal Sortable Cards</ShowcaseSubheading>
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
@@ -89,16 +93,14 @@ export function HorizontalSortableSection() {
         <SortableContext items={cards} strategy={horizontalListSortingStrategy}>
           <div className="flex space-x-4 overflow-x-auto pb-4">
             {cards.map(card => (
-              <SortableItem key={card.id} id={card.id}>
-                <Card className="min-w-[200px] cursor-move hover:shadow-lg transition-shadow">
-                  <h5 className="text-lg font-bold tracking-tight text-gray-900">
+              <SortableItem key={card.id} id={card.id}>                <Card className="min-w-[200px] cursor-move hover:shadow-lg transition-shadow bg-gray-800 border-gray-700">
+                  <h5 className="text-lg font-bold tracking-tight text-white">
                     {card.content}
                   </h5>
-                  <p className="font-normal text-gray-700">
+                  <p className="font-normal text-gray-300">
                     Drag me around to reorder!
                   </p>
-                  <Button size="sm">
-                    Action
+                  <Button size="sm">                    Action
                   </Button>
                 </Card>
               </SortableItem>
@@ -106,6 +108,6 @@ export function HorizontalSortableSection() {
           </div>
         </SortableContext>
       </DndContext>
-    </section>
+    </ShowcaseCard>
   )
 }

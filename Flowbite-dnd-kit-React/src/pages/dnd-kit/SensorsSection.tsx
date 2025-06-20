@@ -5,13 +5,23 @@ import {
   DragOverlay,
   useDraggable,
   useDroppable,
-  useSensor,
-  useSensors,
+  PointerSensor,
   KeyboardSensor,
   TouchSensor,
   MouseSensor,
+  useSensor,
+  useSensors,
 } from '@dnd-kit/core'
+import {
+  sortableKeyboardCoordinates,
+} from '@dnd-kit/sortable'
 import type { DragEndEvent, DragStartEvent, KeyboardCoordinateGetter } from '@dnd-kit/core'
+import { 
+  ShowcaseCard, 
+  ShowcaseSubheading, 
+  ShowcaseText, 
+  ShowcaseSubsection
+} from '../../components/ShowcaseTheme'
 
 // Custom keyboard coordinate getter for drag and drop
 const keyboardCoordinates: KeyboardCoordinateGetter = (event, { context: { active, collisionRect } }) => {
@@ -177,20 +187,17 @@ export function SensorsSection() {
       </Card>
     )
   }
-
   return (
-    <div className="space-y-8 mb-12">
+    <ShowcaseCard>
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Sensors</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">
+        <ShowcaseSubheading>Sensors</ShowcaseSubheading>
+        <ShowcaseText>
           Sensors detect and handle different input methods for drag and drop interactions.
           Configure mouse, touch, and keyboard sensors with various activation constraints.
-        </p>
-      </div>
-
-      {/* Sensor Configuration */}
+        </ShowcaseText>
+      </div>      {/* Sensor Configuration */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Sensor Configuration</h3>
+        <ShowcaseSubsection>Sensor Configuration</ShowcaseSubsection>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <Card>
             <h4 className="text-lg font-semibold mb-3">Enable Sensors</h4>
@@ -424,6 +431,6 @@ function MyComponent() {
           </pre>
         </Card>
       </div>
-    </div>
+    </ShowcaseCard>
   )
 }
